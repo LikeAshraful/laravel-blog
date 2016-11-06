@@ -261,7 +261,10 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i>User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="/admin/users">All Users</a>
+                                </li>
+                                 <li>
+                                    <a href="/admin/user/add">Add New User</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

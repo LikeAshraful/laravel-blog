@@ -1,6 +1,16 @@
-@extends('layouts.app')
+
+@extends('partials.layout.main')
+
+@section('title','Login')
+    
+    @section('nav')
+        @include('partials.nav')
+    @endsection
 
 @section('content')
+
+<section class="blog-content">
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -63,4 +73,6 @@
         </div>
     </div>
 </div>
+
+</section>
 @endsection

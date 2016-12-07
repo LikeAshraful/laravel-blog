@@ -1,4 +1,15 @@
-@extends('layouts.app')
+
+@extends('partials.layout.main')
+
+@section('title','Login')
+    
+    @section('nav')
+        @include('partials.nav')
+    @endsection
+
+@section('content')
+
+<section class="blog-content">
 
 @section('content')
 <div class="container">
@@ -79,4 +90,6 @@
         </div>
     </div>
 </div>
+
+</section>
 @endsection

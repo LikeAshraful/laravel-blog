@@ -6,15 +6,27 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Post;
+use App\User;
 use App\Category;
 use App\Tag;
 use Validator;
-
+use Auth;
 
 class PostController extends Controller
 {
-    public function getIndex(){
-        $posts = Post::all();
+    public function getIndex(Request $request){
+        
+        //search option
+        $search = $request->get('search');
+        $query = Post::orderBy('id');
+        
+        if(!empty($search)){
+            $query->where('title', 'LIKE', '%'.$search.'%')->orwhere('content', 'LIKE', '%'.$search.'%');
+        }
+        
+        $posts = $query->paginate(5);
+        
+        
         $categories = Category::all();
         $tags = Tag::all();
         
@@ -28,6 +40,32 @@ class PostController extends Controller
         return view('admin.show_posts')->with('posts',$posts);
     }
     
+    
+    public function showPostsByCategory($id){
+        $category = Category::find($id);
+        $posts = Post::select('*')->where('category_id', $id)->get();
+        $categories = Category::all();
+        
+        return view('blog.showPostsByCategory')->with('posts', $posts)->with('categories',$categories)->with('category',$category);
+    }
+    
+    public function showPostsByUser($id){
+        
+        $user = User::find($id);
+        $posts = $user->post;
+        $categories = Category::all();
+        return view('blog.showPostsByUser')->with('posts', $posts)->with('categories',$categories)->with('user',$user);
+    }
+    
+    public function showPostsByTag(Tag $tag){
+        
+        //$tag = Tag::find($tag);
+        $posts = $tag->post;
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('blog.showPostsByTag')->with('posts',$posts)->with('tag', $tag)->with('categories',$categories)->with('tags',$tags);
+    }
+    
     public function createPost(){
         $categories = Category::all();
         $tags = Tag::all();
@@ -35,6 +73,7 @@ class PostController extends Controller
     }
     
     public function storePost(Request $request){
+        
       
         $validation = Validator::make($request->all(),[
             'title' => 'required | unique:posts',
@@ -51,6 +90,9 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
+        
+        
+        $post->user_id = Auth::user()->id;
         $post->save();
         
         $post->tag()->sync($request->tags, false);
@@ -64,7 +106,6 @@ class PostController extends Controller
         $categories= Category::all();
         
         return view('blog.showPost')->with('post',$post)->with('categories',$categories);
-        
     }
     
     //function for edit post
@@ -111,6 +152,9 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
+        
+        $post->user_id = Auth::user()->id;
+        
         $post->save();
         
         $post->tag()->sync($request->tags);

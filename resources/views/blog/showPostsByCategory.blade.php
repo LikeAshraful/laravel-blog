@@ -1,13 +1,14 @@
 @extends('partials.layout.main')
-    @section('title','Personal Blog')
+    @section('title',$category->name)
     
     @section('nav')
         @include('partials.nav')
     @endsection
 
         @section('content')
-         
-            <section class="blog-content">
+        
+            
+          <section class="blog-content">
               <!-- Page Content -->
                 <div class="container">
                     <div class="row">
@@ -19,8 +20,6 @@
                             </h1>
                         </div>
                         <div class="col-md-8">
-                            
-                            
                             
                             <!-- Blog Post -->
                             @foreach($posts as $post)
@@ -66,14 +65,13 @@
             
                             <!-- Blog Categories Well -->
                             <div class="well text-center">
-                                <h4>Categories</h4>
-                                  <hr>
+                                <h4>Blog Categories</h4>
                                 <div class="row">
                                     <div class="col-lg-12 ">
                                         @foreach($categories as $category)
-                                        <ul class="list-unstyled ">
-                                           <li> <span> <i class="fa fa-eye"></i> </span><a href="/blog/show/category/{{$category->id}}" > {{$category->name}}</a></li>
-                                           
+                                        <ul class="list-unstyled">
+                                            <li><a href="/blog/show/category/{{$category->id}}">{{$category->name}}</a>
+                                            </li>
                                         </ul>
                                         @endforeach
                                     </div>

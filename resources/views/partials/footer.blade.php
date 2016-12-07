@@ -33,15 +33,15 @@
 			
 				<div class="col-sm-4 text-center"><p class="copy">&copy; Copyright Awesome Co. 2016</p></div>
 				  <div class="col-sm-4 social text-center">
-					<a href="https://twitter.com/likeashraful"><span class="fa-stack fa-lg">
+					<a href="https://twitter.com/likeashraful" target = "_blank"><span class="fa-stack fa-lg">
 						<i class="fa fa-square-o fa-stack-2x"></i>
 						<i class="fa fa-twitter fa-stack-1x"></i>
 					</span></a>
-					<a href="https://facebook.com/likeashraful"><span class="fa-stack fa-lg">
+					<a href="https://facebook.com/likeashraful" target = "_blank"><span class="fa-stack fa-lg">
 						<i class="fa fa-square-o fa-stack-2x"></i>
 						<i class="fa fa-facebook fa-stack-1x"></i>
 					</span></a>
-					 <a href=""><span class="fa-stack fa-lg">
+					 <a href="https://linkedin.com/in/likeashraful"  target = "_blank"><span class="fa-stack fa-lg">
 						<i class="fa fa-square-o fa-stack-2x"></i>
 						<i class="fa fa-linkedin fa-stack-1x"></i>
 					</span></a>
@@ -49,9 +49,9 @@
 						<i class="fa fa-square-o fa-stack-2x"></i>
 						<i class="fa fa-youtube fa-stack-1x"></i>
 					</span></a>
-					 <a href=""><span class="fa-stack fa-lg">
+					 <a href="https://github.com/LikeAshraful" target = "_blank"><span class="fa-stack fa-lg">
 						<i class="fa fa-square-o fa-stack-2x"></i>
-						<i class="fa fa-pinterest fa-stack-1x"></i>
+						<i class="fa fa-github fa-stack-1x"></i>
 					</span></a>
 				  </div>
 				  <div class="col-sm-4 text-center"><p class="dev">Developed By <a href="#">Md Ashraful Islam Palash</a></p></div>

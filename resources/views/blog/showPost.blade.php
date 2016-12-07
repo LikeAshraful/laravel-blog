@@ -31,7 +31,7 @@
             
                             <!-- Author -->
                             <p class="lead">
-                                by <a href="#">admin</a>
+                                by <a href="/blog/show/user-posts/{{$post->user->id}}">{{ $post->user->name}}</a>
                             </p>
             
                             <hr>
@@ -54,7 +54,7 @@
                                 
                                  @foreach ($post->tag as $tag)
                                     <span class="label label-primary">
-                                       {{$tag->name}}
+                                      <a href="/blog/show/tag/{{$tag->name}}">{{$tag->name}}</a> 
                                     </span>&nbsp;&nbsp;
                                    
                                 @endforeach
@@ -112,20 +112,6 @@
                                 <!-- Blog Sidebar Widgets Column -->
                         <div class="col-md-4">
             
-                            <!-- Blog Search Well -->
-                            <div class="well">
-                                <h4>Blog Search</h4>
-                                <div class="input-group">
-                                    <input type="text" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                    </span>
-                                </div>
-                                <!-- /.input-group -->
-                            </div>
-            
                             <!-- Blog Categories Well -->
                             <div class="well text-center">
                                 <h4>Blog Categories</h4>
@@ -133,7 +119,7 @@
                                     <div class="col-lg-12 ">
                                         @foreach($categories as $category)
                                         <ul class="list-unstyled">
-                                            <li><a href="">{{$category->name}}</a>
+                                            <li><a href="/blog/show/category/{{$category->id}}">{{$category->name}}</a>
                                             </li>
                                         </ul>
                                         @endforeach
@@ -152,10 +138,7 @@
                         </div>
                     </div>
                 </div>
-                     
-                       
-                    <a href="/add">Add User</a>
-                    <a href="/create">Add Post</a>
+                  
             </div>
       </section>
       

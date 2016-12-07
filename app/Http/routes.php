@@ -25,18 +25,33 @@ Route::get('/resume', function(){
  ]);
  
  //show single blog post
-     Route::get('/show/{id}', [
+    Route::get('/show/{id}', [
          'as' => 'blog.showPost', 'uses' =>'PostController@showPost'
+    ]);
+    
+    Route::get('blog/show/category/{id}', [
+        'as' => 'blog.showPostsByCategory', 'uses' => 'PostController@showPostsByCategory'  
+    ]);
+    
+    Route::get('blog/show/user-posts/{id}', [
+        'as' => 'blog.showPostsByUser', 'uses' => 'PostController@showPostsByUser'  
+    ]);
+    
+    Route::get('blog/show/tag/{tag}', [
+        'as' => 'blog.showPostsByTag', 'uses' => 'PostController@showPostsByTag'
     ]);
         
  
 Route::auth();
 
 
+Route::get('/user/profile', 'HomeController@userProfile');
 
-Route::group(['middleware' => 'auth'], function(){
+
+
+Route::group(['middleware' => 'Author'], function(){
     
-   Route::get('/admin', 'HomeController@index');
+    Route::get('/admin', 'HomeController@index');
    
    Route::get('/admin/posts', [
    'as' => 'admin.show_posts', 'uses' => 'PostController@showAllpost'  
@@ -50,6 +65,21 @@ Route::group(['middleware' => 'auth'], function(){
          'as' => 'admin.add_post', 'uses' => 'PostController@storePost'
      ]);
      
+     //Route for Tag
+    Route:: get('/admin/tag', [
+        'as' => 'admin.tags.add_tag', 'uses'=>'TagController@index'
+    ]);
+    
+    Route:: post('/admin/tag/add', [
+        'as' => 'tag.store','uses' => 'TagController@store'
+    ]);
+    
+});
+
+
+Route::group(['middleware' => 'admin'], function(){
+    
+    
      Route::get('/admin/edit/{id}', [
         'as' => 'admin.edit_posts', 'uses' => 'PostController@editPost' 
     ]);
@@ -92,14 +122,6 @@ Route::group(['middleware' => 'auth'], function(){
     
     //Route::resource('/','PostController');
     
-    //Route for Tag
-    Route:: get('/admin/tag', [
-        'as' => 'admin.tags.add_tag', 'uses'=>'TagController@index'
-    ]);
-    
-    Route:: post('/admin/tag/add', [
-        'as' => 'tag.store','uses' => 'TagController@store'
-    ]);
     
     Route::get('/admin/tag/edit/{id}',[
         'as' => 'admin.tags.edit_tag', 'uses' => 'TagController@edit'    
@@ -112,12 +134,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/admin/tag/delete/{id}', [
        'as' => 'admin.tags.add_tag', 'uses' => 'TagController@destroy' 
     ]);
-
     
-});
-
-
-Route::group(['middleware' => 'admin'], function(){
     
    //Route for Users
     

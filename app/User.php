@@ -28,6 +28,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
     
+    public function post(){
+        return $this->hasMany('App\Post');
+    }
+    
     
     
     public function isAdmin(){
@@ -37,6 +41,13 @@ class User extends Authenticatable
             return true;
         }
         
+        return false;
+    }
+    
+    public function isAuthor(){
+        if($this->role->name == "author" && $this->is_active == 1){
+            return true;
+        }
         return false;
     }
 }

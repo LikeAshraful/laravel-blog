@@ -41,9 +41,10 @@ class PostController extends Controller
     }
     
     
-    public function showPostsByCategory($id){
-        $category = Category::find($id);
-        $posts = Post::select('*')->where('category_id', $id)->get();
+    public function showPostsByCategory(Category $category){
+        
+        //$posts = Post::select('*')->where('category_id', $id)->get();
+        $posts = $category->post;
         $categories = Category::all();
         
         return view('blog.showPostsByCategory')->with('posts', $posts)->with('categories',$categories)->with('category',$category);

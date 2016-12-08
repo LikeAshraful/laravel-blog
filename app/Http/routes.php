@@ -29,7 +29,7 @@ Route::get('/resume', function(){
          'as' => 'blog.showPost', 'uses' =>'PostController@showPost'
     ]);
     
-    Route::get('blog/show/category/{id}', [
+    Route::get('blog/show/category/{category}', [
         'as' => 'blog.showPostsByCategory', 'uses' => 'PostController@showPostsByCategory'  
     ]);
     

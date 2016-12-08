@@ -119,7 +119,7 @@
                                     <div class="col-lg-12 ">
                                         @foreach($categories as $category)
                                         <ul class="list-unstyled">
-                                            <li><a href="/blog/show/category/{{$category->id}}">{{$category->name}}</a>
+                                            <li><a href="/blog/show/category/{{$category->name}}">{{$category->name}}</a>
                                             </li>
                                         </ul>
                                         @endforeach

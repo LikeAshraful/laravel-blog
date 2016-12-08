@@ -26,7 +26,6 @@ class PostController extends Controller
         
         $posts = $query->paginate(5);
         
-        
         $categories = Category::all();
         $tags = Tag::all();
         
@@ -46,8 +45,10 @@ class PostController extends Controller
         //$posts = Post::select('*')->where('category_id', $id)->get();
         $posts = $category->post;
         $categories = Category::all();
+        $tags = Tag::all();
         
-        return view('blog.showPostsByCategory')->with('posts', $posts)->with('categories',$categories)->with('category',$category);
+        return view('blog.showPostsByCategory')->with('posts', $posts)->with('categories',$categories)
+                                                ->with('category',$category)->with('tags', $tags);
     }
     
     public function showPostsByUser($id){
@@ -55,7 +56,10 @@ class PostController extends Controller
         $user = User::find($id);
         $posts = $user->post;
         $categories = Category::all();
-        return view('blog.showPostsByUser')->with('posts', $posts)->with('categories',$categories)->with('user',$user);
+        $tags = Tag::all();
+        
+        return view('blog.showPostsByUser')->with('posts', $posts)->with('categories',$categories)
+                                            ->with('user',$user)->with('tags', $tags);
     }
     
     public function showPostsByTag(Tag $tag){
@@ -105,8 +109,9 @@ class PostController extends Controller
         
         $post = Post::find($id);
         $categories= Category::all();
+        $tags = Tag::all();
         
-        return view('blog.showPost')->with('post',$post)->with('categories',$categories);
+        return view('blog.showPost')->with('post',$post)->with('categories',$categories)->with('tags', $tags);
     }
     
     //function for edit post

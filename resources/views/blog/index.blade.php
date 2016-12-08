@@ -84,8 +84,14 @@
             
                             <!-- Side Widget Well -->
                             <div class="well">
-                                <h4>Side Widget Well</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                                <h4>Blog Tags</h4>
+                                
+                                 @foreach($tags as $tag)
+                                     <span class="label label-primary">
+                                          <a href="/blog/show/tag/{{$tag->name}}">{{$tag->name}}</a> 
+                                        </span>&nbsp;&nbsp;
+                                       
+                                 @endforeach
                             </div>
             
                         </div>

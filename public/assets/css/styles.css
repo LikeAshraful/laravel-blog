@@ -1,4 +1,5 @@
-.btn-primary.active,.btn-primary:active,.btn-xl.active,.btn-xl:active,.open .dropdown-toggle.btn-primary,.open .dropdown-toggle.btn-xl{
+.btn-primary.active,.btn-primary:active,.btn-xl.active,.btn-xl:active,
+    .open .dropdown-toggle.btn-primary,.open .dropdown-toggle.btn-xl{
 	 background-image:none
 }
  
@@ -13,7 +14,6 @@
 	 font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	 text-transform:uppercase;
 	 font-weight:700
-     
  }
  
  .text-muted{
@@ -23,7 +23,6 @@
  
  .text-primary,a{
      color:#fed136
-     
  }
  
  p{
@@ -151,7 +150,8 @@
      
  }
  .navbar-custom .navbar-nav>.active>a{
-     border-radius:0;color:#fff;
+     border-radius:0;
+     color:#fff;
      background-color:#fed136
      
  }
@@ -261,6 +261,139 @@ header .intro-text .intro-heading{
 	padding-bottom: 100px;
 	background-color: #fed136;
 }
+
+
+
+/*WORK SECTION STYLES
+-------------------------------------------------*/
+#work{
+	padding-bottom: 45px;
+}
+
+#work .work-single {
+    right: 0;
+    margin: 0 0 15px;
+}
+
+#work .work-single a:hover {
+	background-color: red;
+}
+
+#work .work-single .work-link {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+#work .work-single .work-link .caption {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    transition: all ease .5s;
+}
+
+#work .work-single .work-link .caption:hover {
+    opacity: 1;
+}
+
+#work .work-single .work-link .caption .caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 20px;
+    margin-top: -12px;
+    text-align: center;
+    font-size: 20px;
+    color: #fed136;
+}
+
+#work .work-single .work-link .caption .caption-content i {
+    margin-top: -12px;
+    
+}
+
+#work .work-single .work-link .caption .caption-content h3
+{
+   text-transform: uppercase;
+  
+}
+
+#work * {
+    z-index: 2;
+}
+
+.work-modal .modal-content {
+    padding: 100px 0;
+    min-height: 100%;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    background-clip: border-box;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.work-modal .modal-content h2 {
+    margin: 0;
+    font-size: 3em;
+    padding-bottom:20px;
+}
+
+.work-modal .modal-content img {
+    padding-top:10px;
+    margin-bottom: 30px;
+}
+
+.work-modal .modal-content .item-details {
+    margin: 30px 0;
+}
+
+.work-modal .close-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.work-modal .close-modal:hover {
+    opacity: .3;
+}
+
+.work-modal .close-modal .lr {
+    z-index: 1051;
+    width: 1px;
+    height: 75px;
+    margin-left: 35px;
+    background-color: #2c3e50;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.work-modal .close-modal .lr .rl {
+    z-index: 1052;
+    width: 1px;
+    height: 75px;
+    background-color: #2c3e50;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.work-modal .modal-backdrop {
+    display: none;
+    opacity: 0;
+}
+
+
+
 
 
 /*style for skills*/

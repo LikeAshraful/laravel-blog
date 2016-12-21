@@ -20,7 +20,7 @@
                         <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="{{route('admin.user.profile')}}"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
@@ -67,6 +67,19 @@
                                 </li>
                                  <li>
                                     <a href="/admin/user/add"><i class="fa fa-user fa-fw"></i>Add New User</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-building fa-fw"></i>Work<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/works"><i class="fa fa-building-o fa-fw"></i>All Works</a>
+                                </li>
+                                 <li>
+                                    <a href="/admin/work/add"><i class="fa fa-building fa-fw"></i>Add New Work</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

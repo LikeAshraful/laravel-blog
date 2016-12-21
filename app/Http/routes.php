@@ -10,19 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
- Route::get('/', function () {
-     return view('home');
-});
+ Route::get('/', [
+   'as' => 'home', 'uses' => 'IndexController@getIndex'
+]);
 
 Route::get('/resume', function(){
    return view('resume.index');
 });
 
 
-//Post
- Route::get('/blog', [
-     'as' => 'blog.index', 'uses' => 'PostController@getIndex'
- ]);
+    //Post
+     Route::get('/blog', [
+         'as' => 'blog.index', 'uses' => 'PostController@getIndex'
+     ]);
  
  //show single blog post
     Route::get('/show/{id}', [
@@ -45,9 +45,9 @@ Route::get('/resume', function(){
 Route::auth();
 
 
-Route::get('/user/profile', 'HomeController@userProfile');
-
-
+Route::get('/user/profile', [
+    'as' => 'admin.user.profile', 'uses' => 'HomeController@userProfile'
+    ]);
 
 Route::group(['middleware' => 'Author'], function(){
     
@@ -78,7 +78,6 @@ Route::group(['middleware' => 'Author'], function(){
 
 
 Route::group(['middleware' => 'admin'], function(){
-    
     
      Route::get('/admin/edit/{id}', [
         'as' => 'admin.edit_posts', 'uses' => 'PostController@editPost' 
@@ -156,6 +155,31 @@ Route::group(['middleware' => 'admin'], function(){
     
     Route::post('admin/user/{id}/edit', [
         'as' => 'admin.users.edit', 'uses' => 'UsersController@update'    
+    ]);
+    
+    //Route for Work
+    Route::get('admin/works/', [
+    'as' => 'admin.works.index', 'uses' => 'WorkController@index'    
+    ]);
+    
+    Route::get('admin/work/add', [
+        'as' => 'admin.works.create', 'uses' => 'WorkController@create'  
+    ]);
+    
+    Route::post('admin/work/add', [
+        'as' => 'admin.works.create', 'uses' => 'WorkController@store'  
+    ]);
+    
+    Route::get('admin/work/{id}/edit', [
+       'as' => 'admin.works.edit', 'uses' => 'WorkController@edit' 
+    ]);
+    
+    Route::post('admin/work/{id}/edit', [
+        'as' => 'admin.works.edit', 'uses' => 'WorkController@update'    
+    ]);
+    
+    Route::get('admin/work/{id}/delete', [
+        'as' => 'admin.works', 'uses' => 'WorkController@destroy'
     ]);
 
     

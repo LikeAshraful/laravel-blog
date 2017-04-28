@@ -11,6 +11,8 @@ use App\Category;
 use App\Tag;
 use Validator;
 use Auth;
+use Storage;
+use Image;
 
 class PostController extends Controller
 {
@@ -82,8 +84,9 @@ class PostController extends Controller
       
         $validation = Validator::make($request->all(),[
             'title' => 'required | unique:posts',
-            'content' => 'required'
-            ]);
+            'content' => 'required',
+            'image' => 'image|mimes:jpeg,png'
+        ]);
             
         if($validation->fails() ){
             return redirect()->back()->withInput()
@@ -95,6 +98,20 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
+        
+        
+        // upload the image //
+        $file = $request->file('image');
+        
+        $destination_path = 'uploads/';
+        $filename = str_random(6).'_'.$file->getClientOriginalName();
+        $file->move($destination_path, $filename);
+        
+        $thumb = Image::make('uploads/' . $filename )->resize(100,100)->save('uploads/thumbs/' . $filename, 50);
+        
+        $post->img_name = $filename;
+        $post->img_path = $destination_path . $filename;
+        $post->img_thumb = 'uploads/thumbs/' . $filename;
         
         
         $post->user_id = Auth::user()->id;
@@ -154,6 +171,34 @@ class PostController extends Controller
         }
         
         $post = Post::find($id);
+        
+        
+        $oldFileName = $post->img_name;
+        $filename = $oldFileName;
+        $file = $request->file('image');
+        
+        $destination_path = 'uploads/';
+          
+        // if user choose a file, replace the old one //
+        if($request->hasfile('image') ){
+            
+            $filename = str_random(6).'_'.$file->getClientOriginalName();
+            //dd($filename);
+            $file->move($destination_path, $filename);
+            
+            $thumb = Image::make($destination_path . $filename )->resize(100,100)->save($destination_path . 'thumbs/' . $filename, 50);
+            
+            
+            Storage::delete($oldFileName);
+            unlink(public_path('uploads/' . $oldFileName));
+            unlink(public_path('uploads/thumbs/' . $oldFileName));
+            
+        }
+        
+         //newly save
+        $post->img_name = $filename;
+        $post->img_path = $destination_path . $filename;
+        $post->img_thumb = 'uploads/thumbs/' . $filename;
           
         $post->title = $request->input('title');
         $post->content = $request->input('content');

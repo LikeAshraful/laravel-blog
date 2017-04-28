@@ -18,11 +18,11 @@
                     <li>
                         <a class="page-scroll" href="#about">About</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#skills">Skills</a>
+                     <li>
+                        <a class="page-scroll" href="#work">Work</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#work">Work</a>
+                        <a class="page-scroll" href="#skills">Skills</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>

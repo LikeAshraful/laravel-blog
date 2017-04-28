@@ -25,11 +25,13 @@
                 </div>
             @endif
             
+         <div class="col-md-12">
+            <h2>Update Post</h2>
+        </div>
+            
         <div class="col-md-7">
             
-            <h2>Edit Post</h2>
-            
-            {!! Form::open(['url'=>'/admin/edit/'.$post->id, 'method'=>'POST']) !!}
+            {!! Form::open(['url'=>'/admin/edit/'.$post->id, 'method'=>'POST','files'=>'true' ]) !!}
              
               
                 {{ Form:: label('category', 'Category:') }}
@@ -51,11 +53,19 @@
                  <textarea rows="8" class="form-control" name="content">{{ $post->content }}</textarea>
               </div>
         
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Update</button>
               <a href="{{ url('/admin/posts') }}" class="btn btn-warning">Cancel</a>
-    
-            {!! Form::close() !!}
         </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" class="form-control" name="image" value="">
+            </div>
+            <div>
+                <img src="/{{$post->img_thumb}}" width="200"></img>
+            </div>
+        </div>
+        {!! Form::close() !!}
       </div>
     </<div>
 @endsection

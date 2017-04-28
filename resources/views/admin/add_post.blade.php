@@ -20,16 +20,19 @@
         
          @if( Session::has('message') )
               <div class="alert alert-warning alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    {{Session::get('message')}}
-                </div>
-            @endif
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                {{Session::get('message')}}
+            </div>
+        @endif
+            
+        <div class="col-md-12">
+            <h2>Create New Post</h2>
+        </div>
             
         <div class="col-md-7">
             
-            {!! Form::open(['url'=>'/post/create', 'method'=>'POST']) !!}
+            {!! Form::open(['url'=>'/post/create', 'method'=>'POST','files'=>'true']) !!}
             
-            <h2>Create New Post</h2>
             
               <div class="form-group">
                   <label for="id_label" >Select Category</label>
@@ -62,9 +65,14 @@
         
               <button type="submit" class="btn btn-primary">Submit</button>
               <a href="{{ url('/admin/') }}" class="btn btn-warning">Cancel</a>
-    
-            {!! Form::close() !!}
         </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" class="form-control" name="image" value="">
+            </div>
+        </div>
+        {!! Form::close() !!}
       </div>
     </<div>
 @endsection

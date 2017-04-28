@@ -21,6 +21,7 @@
                 <table class="table table-hover">
                     <tr>
                         <th>Serial No.</th>
+                        <th>Image</th>
                         <th>Post Title</th>
                         <th>Post Content</th>
                         <th>View</th>
@@ -29,11 +30,10 @@
                     </tr>
                     
                     
-                    
-                    
                     @foreach($posts as $post)
                     <tr>
                         <td>{{ $post->id }}</td>
+                        <td><img src="/{{$post->img_thumb}}"></img></td>
                         <td>{{$post->title}}</td>
                         <td>{{$post->content}}</td>
                         <td><a href="/show/{{$post->id}}"><button type="button" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>

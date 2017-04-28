@@ -259,15 +259,20 @@ header .intro-text .intro-heading{
 .about-section{
 	padding-top: 50px;
 	padding-bottom: 100px;
-	background-color: #fed136;
+	background-color: #ffff00;
 }
-
 
 
 /*WORK SECTION STYLES
 -------------------------------------------------*/
 #work{
-	padding-bottom: 45px;
+	padding-top:25px;
+    padding-bottom: 45px;
+}
+
+#work h2{
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 #work .work-single {
@@ -394,16 +399,38 @@ header .intro-text .intro-heading{
 
 
 
+    /*style for work progress*/
+    
+    #work-progress{
+        padding-top: 45px;
+        padding-bottom: 45px;
+        background-color: #ffff00;
+    }
+    
+    span.countup {
+        color: #000000;
+        font-size: 60px;
+        line-height: 1.4;
+        font-weight: 100;
+        font-family: 'Raleway', sans-serif;
+    }
+
 
 
 /*style for skills*/
+
+    
+    #skills h2{
+    padding-top: 20px;
+    padding-bottom: 30px;
+    }
+
 	.skills-section{
 		padding-top: 60px;
 		padding-bottom: 60px;
 		text-transform: uppercase;
 		text-align: center;
 	}
-	
 	
 	.bar{
 		display: block;
@@ -497,6 +524,17 @@ header .intro-text .intro-heading{
 		text-align: center;
 		text-transform: uppercase;
 		
+	}
+	
+	
+	.getin{
+	    padding-top:15px;
+	    padding-bottom: 30px;
+	    background-color:#fed136;
+	}
+	
+	.getin a{
+	    color:#ffffff;
 	}
 
 /*style for resume page */

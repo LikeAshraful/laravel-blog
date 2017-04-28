@@ -36,39 +36,43 @@
             </div>
         </div>
     </section>
-    
-   <!--START WORK SECTION-->
+
+    <!--START WORK SECTION-->
 	
 	<section id="work">
-        <div class="container wow fadeInUp" data-wow-offset="10" data-wow-duration="1.5s" data-wow-delay=".3s">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2>Some of Our Works</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 work-single">
-                    <a href="#workModal1" class="work-link" data-keyboard="true" data-toggle="modal">
-                        
-                        @foreach($works as $work)
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-								<h3>{{ $work->title }}</h3>
-                            </div>
-                        </div>
-                        <img src="{{ $work->img_path }}" class="img-responsive" alt="{{ $work->title }}">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+	        <div class="container wow fadeInUp" data-wow-offset="10" data-wow-duration="1.5s" data-wow-delay=".3s">
+	            <div class="row">
+	                <div class="col-md-12 text-center">
+	                    <h2>Works</h2>
+	                </div>
+	            </div>
+	            <div class="row">
+	            	@foreach($works as $work)
+	                <div class="col-md-4 col-sm-6 work-single">
+	                    <a href="#{{ $work->id}}" class="work-link" data-keyboard="true" data-toggle="modal">                      
+	                        
+	                        <div class="caption">
+	                            <div class="caption-content">
+	                                <i class="fa fa-search-plus fa-3x"></i>
+					<h3>{{ $work->title }}</h3>
+	                            </div>
+	                        </div>
+	                        <img src="{{ $work->img_path }}" class="img-responsive" alt="{{ $work->title }}"  style="width:450px;height:300px;">
+	                    </a>
+	                    
+	                </div>
+	                @endforeach
+	            </div>
+	        </div>
+	    </section>
     
     <!--END WORK SECTION-->
 
     <!--START WORK MODALS-->
     
-    <div class="work-modal modal fade" id="workModal1" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false" data-keyboard="true">
+    @foreach($works as $work)
+    
+    <div class="work-modal modal fade" id="{{ $work->id }}" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false" data-keyboard="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -78,6 +82,7 @@
             </div>
             <div class="container">
                 <div class="row">
+                	
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <h2>{{ $work->title }}</h2>
@@ -94,20 +99,63 @@
                                     <strong><a href="#">{{ $work->service }}</a></strong>
                                 </li>
                             </ul>
-                            @endforeach
+                            
                             <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
                         </div>
                     </div>
+                    
+
                 </div>
             </div>
         </div>
     </div>
     <!--END WORK MODALS-->
+    @endforeach
     
+    
+    
+    <!-- Work Progress Counter -->     
+
+    <section id="work-progress">
+        <div class="container">
+            <div class="row">
+                <div class="service-counter">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="counter text-center">         
+                            <span class="countup">4502</span>
+                            <p>Project Done</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="counter text-center">           
+                            <span class="countup">0085</span>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="counter text-center">          
+                            <span class="countup">0451</span>
+                            <p>Job Hired</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="counter text-center">           
+                            <span class="countup">0089</span>
+                            <p>New Project</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- Container -->
+    </section> <!-- page-work-progress -->
+
     
     <section class="skills-section" id="skills">
         <div class="container">
-            <h2> Some of My Skills</h2>
+            <h2>My Skills</h2>
             <div class="row">
                 <div class="bar" data-percent="70">
             		<h3>Laravel</h3>

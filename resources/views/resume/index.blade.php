@@ -197,6 +197,27 @@
 	</div><!--/.container -->
 	
 	</section>
+	
+	
+	<section id="getin" class="getin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Seen Enough ?</h2>
+                    <hr class="primary">
+                    <p>Ready to start your next project with Me? That's great! Give me a call or send me an email and I will get back to you as soon as possible!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact" data-sr-id="9"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact" data-sr-id="10"></i>
+                    <p><a href="mailto:maipalash35@gmail.com">maipalash35@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 @endsection

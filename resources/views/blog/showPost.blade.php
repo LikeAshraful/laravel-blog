@@ -42,7 +42,7 @@
                             <hr>
             
                             <!-- Preview Image -->
-                            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                            <img class="img-responsive" src="/{{$post->img_path}}" alt="{{$post->img_name}}" width="">
             
                             <hr>
             

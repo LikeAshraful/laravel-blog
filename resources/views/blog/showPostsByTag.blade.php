@@ -32,7 +32,7 @@
                                 </p>
                                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{$post->created_at->format('D-M-Y')}}</p>
                                 <hr>
-                                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                                <img class="img-responsive" src="/{{$post->img_path}}" alt="{{$post->img_name}}" width="">
                                 <hr>
                                 <?php
                                     $str = $post->content ;

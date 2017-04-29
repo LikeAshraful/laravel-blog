@@ -133,26 +133,15 @@
 					<div class="col-lg-2 col-lg-offset-1">
 						<h5>SKILLS</h5>
 					</div>
-						<div class="col-lg-8">
-						<div class="centered resume-bar" data-percent="70">
-							<p>Laravel</p>
+					
+					<div class="col-lg-8">
+						@foreach($skills as $skill)
+						<div class="centered resume-bar" data-percent="{{$skill->skill_percent}}">
+							<p>{{$skill->skill_title}}</p>
 						</div>
-						<div class=" centered resume-bar" data-percent="75">
-							<p>PHP</p>
-						</div>
-						<div class=" centered resume-bar" data-percent="80">
-							<p>HTML</p>
-						</div>
-						<div class=" centered resume-bar" data-percent="80">
-							<p>CSS</p>
-						</div>
-						<div class=" centered resume-bar" data-percent="50">
-							<p>Javascript</p>
-						</div>
-						<div class=" centered resume-bar" data-percent="80">
-							<p>Bootstrap</p>
-						</div>
+						@endforeach	
 					</div>
+					
 					
 			</div><!--/.row -->
 			<br />

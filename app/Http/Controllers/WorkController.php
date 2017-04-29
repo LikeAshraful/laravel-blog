@@ -23,8 +23,6 @@ class WorkController extends Controller
     
     public function store(Request $request){
         
-        //dd($request);
-        
         $validation = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
@@ -57,6 +55,7 @@ class WorkController extends Controller
     }
     
     public function edit($id){
+        
         $work = Work::find($id);
         
         return view('admin.works.edit')->with('work',$work);

@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="{{route('admin.user.profile')}}"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/admin"><i class="fa fa-gear fa-fw"></i>Dashboard</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -73,7 +73,7 @@
                         </li>
                         
                         <li>
-                            <a href="#"><i class="fa fa-building fa-fw"></i>Work<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-building fa-fw"></i>Works<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/admin/works"><i class="fa fa-building-o fa-fw"></i>All Works</a>
@@ -85,6 +85,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         
+                       <li>
+                            <a href="#"><i class="fa fa-building fa-fw"></i>Skills<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/skills"><i class="fa fa-building-o fa-fw"></i>All Skills</a>
+                                </li>
+                                 <li>
+                                    <a href="/admin/skills/add"><i class="fa fa-building fa-fw"></i>Add New Skills</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                        
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>

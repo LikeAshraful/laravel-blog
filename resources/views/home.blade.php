@@ -157,30 +157,11 @@
         <div class="container">
             <h2>My Skills</h2>
             <div class="row">
-                <div class="bar" data-percent="70">
-            		<h3>Laravel</h3>
+                @foreach($skills as $skill)
+                <div class="bar" data-percent="{{ $skill->skill_percent }}">
+            		<h3>{{ $skill->skill_title }}</h3>
             	 </div>
-            	 
-            	 <div class="bar" data-percent="75">
-            		<h3>PHP</h3>
-            	 </div>
-            	 
-            	 <div class="bar" data-percent="80">
-            		<h3>HTML5</h3>
-            	 </div>
-            	 
-            	 <div class="bar" data-percent="80">
-            		<h3>CSS</h3>
-            	 </div>
-            	 
-            	 <div class="bar" data-percent="50">
-            		<h3>JS</h3>
-            	 </div>
-            	 
-            	 <div class="bar" data-percent="80">
-            		<h3>Bootstrap</h3>
-            	 </div>
-
+                @endforeach
             </div>
         </div>
     </section>

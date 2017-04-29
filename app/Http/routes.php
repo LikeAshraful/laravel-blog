@@ -14,17 +14,16 @@
    'as' => 'home', 'uses' => 'IndexController@getIndex'
 ]);
 
-Route::get('/resume', function(){
-   return view('resume.index');
-});
-
+    Route::get('/resume',[
+        'as' => 'resume.index', 'uses' => 'IndexController@getResume'
+    ]);
 
     //Post
      Route::get('/blog', [
          'as' => 'blog.index', 'uses' => 'PostController@getIndex'
      ]);
  
- //show single blog post
+    //show single blog post
     Route::get('/show/{id}', [
          'as' => 'blog.showPost', 'uses' =>'PostController@showPost'
     ]);
@@ -182,5 +181,28 @@ Route::group(['middleware' => 'admin'], function(){
         'as' => 'admin.works', 'uses' => 'WorkController@destroy'
     ]);
 
+    //Route for skill section
+    Route::get('admin/skills',[
+        'as' => 'admin.skills.index', 'uses' => 'SkillController@index'     
+    ]);
     
+    Route::get('admin/skills/add',[
+       'as'=>'admin.skills.create', 'uses' => 'SkillController@create' 
+    ]);
+    
+    Route::post('admin/skills/add',[
+       'as'=>'admin.skills.create', 'uses' => 'SkillController@store' 
+    ]);
+    
+    Route::get('admin/skills/{id}/edit', [
+       'as' => 'admin.skills.edit', 'uses' => 'SkillController@edit' 
+    ]);
+    
+    Route::post('admin/skills/{id}/edit', [
+       'as' => 'admin.skills.edit', 'uses' => 'SkillController@update' 
+    ]);
+    
+    Route::get('admin/skills/{id}/delete', [
+       'as' => 'admin.skills', 'uses' => 'SkillController@destroy' 
+    ]);
 });

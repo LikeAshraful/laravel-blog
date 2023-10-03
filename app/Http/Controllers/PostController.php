@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
 
-use App\Http\Requests;
+use Image;
+use App\Tag;
+use Storage;
 use App\Post;
 use App\User;
-use App\Category;
-use App\Tag;
 use Validator;
-use Auth;
-use Storage;
-use Image;
+use App\Category;
+use App\Http\Requests;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -104,7 +105,7 @@ class PostController extends Controller
         $file = $request->file('image');
         
         $destination_path = 'uploads/';
-        $filename = str_random(6).'_'.$file->getClientOriginalName();
+        $filename = Str::random(6).'_'.$file->getClientOriginalName();
         $file->move($destination_path, $filename);
         
         $thumb = Image::make('uploads/' . $filename )->resize(100,100)->save('uploads/thumbs/' . $filename, 50);
@@ -182,7 +183,7 @@ class PostController extends Controller
         // if user choose a file, replace the old one //
         if($request->hasfile('image') ){
             
-            $filename = str_random(6).'_'.$file->getClientOriginalName();
+            $filename = Str::random(6).'_'.$file->getClientOriginalName();
             //dd($filename);
             $file->move($destination_path, $filename);
             

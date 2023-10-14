@@ -23,7 +23,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ App\User::count() }}</div>
+                                    <div class="huge">{{ App\Models\User::count() }}</div>
                                     <div>Total Users</div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ App\User::where('is_active','=','0')->count() }}</div>
+                                    <div class="huge">{{ App\Models\User::where('is_active','=','0')->count() }}</div>
                                     <div>New Users!</div>
                                 </div>
                             </div>

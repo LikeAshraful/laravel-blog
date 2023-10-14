@@ -1,9 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
 @include('admin.partials.header')
 
 <body>
     <div id="wrappper">
-      @include('admin.partials.nav')
-      
+      @include('admin.partials.nav')      
       @yield('content')
 
 

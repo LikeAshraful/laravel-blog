@@ -27,6 +27,7 @@
             margin-right: 6px;
         }
     </style>
+    @vite('resources/css/app.css')
 </head>
 
 <body id="app-layout">

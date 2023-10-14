@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\User;
+use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserTableSeeder extends Seeder
 {
@@ -13,10 +13,18 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        Admin::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'role_id' => 1,
+            'password' => bcrypt('12345678'),
+            'is_active' => 1
+        ]);
+
+        User::create([
+            'name' => 'author',
+            'email' => 'author@author.com',
+            'role_id' => 2,
             'password' => bcrypt('12345678'),
             'is_active' => 1
         ]);

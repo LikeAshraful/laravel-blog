@@ -35,7 +35,7 @@ Route::get('/user/profile', [HomeController::class, 'userProfile'])->name('admin
 Route::middleware(['Author'])->group(function () {
     Route::get('/admin', [HomeController::class, 'index']);
     Route::get('/admin/posts', [PostController::class, 'showAllpost'])->name('admin.show_posts');
-    Route::get('/post/create', [PostController::class, 'createPost'])->name('admin.add_post');
+    Route::get('/post/create', [PostController::class, 'createPost'])->name('admin.create_post_form');
     Route::post('/post/create', [PostController::class, 'storePost'])->name('admin.add_post');
     // Route for Tag
     Route::get('/admin/tag', [TagController::class, 'index'])->name('admin.tags.add_tag');
@@ -46,10 +46,10 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/admin/edit/{id}', [PostController::class, 'editPost'])->name('admin.edit_posts');
     Route::post('/admin/edit/{id}', [PostController::class, 'updatePost'])->name('admin.edit_posts');
-    Route::get('/post/delete/{id}', [PostController::class, 'destroyPost'])->name('admin.show_posts');
+    Route::get('/post/delete/{id}', [PostController::class, 'destroyPost'])->name('admin.post_delete');
 
     // Category
-    Route::get('/admin/category', [CategoryController::class, 'getIndex'])->name('admin.add_category');
+    Route::get('/admin/category', [CategoryController::class, 'getIndex'])->name('admin.category.index');
     Route::get('/admin/category/add', [CategoryController::class, 'addCategory'])->name('admin.add_category');
     Route::post('/admin/category/add', [CategoryController::class, 'storeCategory'])->name('admin.add_category');
     Route::get('/admin/category/edit/{id}', [CategoryController::class, 'editCategory'])->name('admin.edit_category');

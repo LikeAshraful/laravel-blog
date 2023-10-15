@@ -11,59 +11,55 @@ use Validator;
 
 class CategoryController extends Controller
 {
-    
-    public function getIndex(){
-        $categories = Category::paginate(5);
-        
-        return view('admin.add_category')->with('categories',$categories);
+
+    public function getIndex()
+    {
+        $categories = Category::paginate(2);
+        return view('admin.category.add_category')->with('categories', $categories);
     }
-    
-    public function addCategory(){
-        return view('admin.add_category');
+
+    public function addCategory()
+    {
+        return view('admin.category.add_category');
     }
-    
-    public function storeCategory(Request $request){
-         $validation = Validator::make($request->all(),[
-            'name' => 'required|unique:categories'
-            ]);
-            
-        if($validation->fails() ){
-            return redirect()->back()->withInput()
-                             ->with('errors',$validation->errors() );
-        }
-        
+
+    public function storeCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|unique:categories',
+        ]);
+
         $category = new Category;
         $category->name = $request->input('name');
         $category->description = $request->input('description');
-        
         $category->save();
-        
-        return redirect('/admin/category')->with('message','Succesfully created Category');
+
+        return redirect('/admin/category')->with('message', 'Successfully created Category');
     }
-    
-    public function editCategory($id){
-        
+
+    public function editCategory($id)
+    {
         $category = Category::find($id);
-        
-        return view('admin.edit_category')->with('category',$category);
-    }
-    
-    public function updateCategory(Request $request, $id){
-        $validation = Validator::make($request->all(), [
-            'name' => 'required|unique:categories'
+        $categories = Category::paginate(5);
+
+        return view('admin.category.edit_category')->with([
+            'category' => $category,
+            'categories' => $categories
         ]);
-        
-        if($validation->fails()){
-            return redirect()->back()->withInput()->with('errors', $validation->errors());
-        }
-        
+    }
+
+    public function updateCategory(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|unique:categories,name,' . $id,
+        ]);
+
         $category = Category::find($id);
-        
         $category->name = $request->name;
         $category->description = $request->description;
-        
+
         $category->save();
-        
-        return redirect('/admin/category')->with('message', 'Category Succesfully Edited');
+
+        return redirect('/admin/category')->with('message', 'Category Has Been Successfully Updated');
     }
 }

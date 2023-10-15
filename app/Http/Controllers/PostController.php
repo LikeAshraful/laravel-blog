@@ -11,7 +11,6 @@ use App\Post;
 use App\Models\User;
 use Validator;
 use App\Category;
-use App\Http\Requests;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -19,13 +18,12 @@ class PostController extends Controller
 {
     public function getIndex(Request $request)
     {
-
         //search option
         $search = $request->get('search');
         $query = Post::orderBy('id');
 
         if (!empty($search)) {
-            $query->where('title', 'LIKE', '%' . $search . '%')->orwhere('content', 'LIKE', '%' . $search . '%');
+            $query->where('title', 'LIKE', '%' . $search . '%')->orWhere('content', 'LIKE', '%' . $search . '%');
         }
 
         $posts = $query->paginate(5);
@@ -41,7 +39,7 @@ class PostController extends Controller
     {
         $posts = Post::paginate(10);
 
-        return view('admin.show_posts')->with('posts', $posts);
+        return view('admin.posts.show_posts')->with('posts', $posts);
     }
 
 
@@ -83,12 +81,11 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.add_post')->with('categories', $categories)->with('tags', $tags);
+        return view('admin.posts.add_post')->with('categories', $categories)->with('tags', $tags);
     }
 
     public function storePost(Request $request)
     {
-
 
         $validation = Validator::make($request->all(), [
             'title' => 'required | unique:posts',
@@ -127,7 +124,7 @@ class PostController extends Controller
 
         $post->tag()->sync($request->tags, false);
 
-        return redirect('/admin/posts')->with('message', 'Succesfully Created Post');
+        return redirect('/admin/posts')->with('message', 'Successfully Created Post');
     }
 
     public function showPost($id)
@@ -162,7 +159,7 @@ class PostController extends Controller
         }
 
 
-        return view('admin.edit_posts')
+        return view('admin.posts.edit_posts')
             ->with('post', $post)
             ->with('categories', $cats)
             ->with('tags', $tags2);

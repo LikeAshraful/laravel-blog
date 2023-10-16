@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 
-use Image;
 use App\Tag;
-use Storage;
 use App\Post;
-use App\Models\User;
-use Validator;
 use App\Category;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -100,7 +100,7 @@ class PostController extends Controller
 
         $post = new Post;
         $post->title = $request->input('title');
-        $post->slug = Str::slug($request->input('title'));
+        $post->slug = $request->input('slug') ?? Str::slug($request->input('title'));
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
         $post->status = $request->input('status') == "on" ? 1 : 0;
@@ -121,7 +121,7 @@ class PostController extends Controller
 
         $post->user_id = Auth::user()->id;
         $post->save();
-        $post->tag()->sync($request->tags, false);
+        $post->tags()->sync($request->tags, false);
 
         return redirect()->route('admin.show_posts')->with('message', 'Successfully Created Post');
     }
@@ -137,94 +137,78 @@ class PostController extends Controller
     }
 
     //function for edit post
-
     public function editPost($id)
     {
 
         $post = Post::find($id);
         $categories = Category::all();
-        $cats = array();
-
-        foreach ($categories as $category) {
-            $cats[$category->id] = $category->name;
-        }
-
+        $authors = User::isActive()->get();
         $tags = Tag::all();
-        $tags2 = array();
 
-        foreach ($tags as $tag) {
-            $tags2[$tag->id] = $tag->name;
-        }
-
-
-        return view('admin.posts.edit_posts')
-            ->with('post', $post)
-            ->with('categories', $cats)
-            ->with('tags', $tags2);
+        return view('admin.posts.edit_posts', [
+            'post' => $post,
+            'categories' => $categories,
+            'authors' => $authors,
+            'tags' => $tags
+        ]);
     }
 
     public function updatePost(Request $request, $id)
     {
 
-        $validation = Validator::make($request->all(), [
-            'title' => 'required|max:255|min:10',
-            'content' => 'required'
+        $request->validate([
+            'title' => 'required | unique:posts,title,' . $id,
+            'content' => 'required',
+            'image' => 'image|mimes:jpeg,png'
         ]);
-
-        if ($validation->fails()) {
-            return redirect()->back()->withInput()
-                ->with('errors', $validation->errors());
-        }
 
         $post = Post::find($id);
 
-
-        $oldFileName = $post->img_name;
-        $filename = $oldFileName;
-        $file = $request->file('image');
-
-        $destination_path = 'uploads/';
-
-        // if user choose a file, replace the old one //
         if ($request->hasfile('image')) {
 
-            $filename = Str::random(6) . '_' . $file->getClientOriginalName();
-            //dd($filename);
-            $file->move($destination_path, $filename);
+            $oldFileName = $post->img_name;
+            $filename = $oldFileName;
+            $file = $request->file('image');
+            $destination_path = 'uploads/';
 
+
+            $filename = Str::random(6) . '_' . $file->getClientOriginalName();
+            $file->move($destination_path, $filename);
             $thumb = Image::make($destination_path . $filename)->resize(100, 100)->save($destination_path . 'thumbs/' . $filename, 50);
 
+            if ($oldFileName) {
+                Storage::delete($oldFileName);
+                unlink(public_path('uploads/' . $oldFileName));
+                unlink(public_path('uploads/thumbs/' . $oldFileName));
+            }
 
-            Storage::delete($oldFileName);
-            unlink(public_path('uploads/' . $oldFileName));
-            unlink(public_path('uploads/thumbs/' . $oldFileName));
+            //newly img save
+            $post->img_name = $filename;
+            $post->img_path = $destination_path . $filename;
+            $post->img_thumb = 'uploads/thumbs/' . $filename;
         }
-
-        //newly save
-        $post->img_name = $filename;
-        $post->img_path = $destination_path . $filename;
-        $post->img_thumb = 'uploads/thumbs/' . $filename;
 
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
-
         $post->user_id = Auth::user()->id;
+        $post->slug = $request->input('slug') ?? Str::slug($request->input('title'));
+        $post->status = $request->input('status') == "on" ? 1 : 0;
+        $post->author_id = $request->input('author');
 
         $post->save();
+        $post->tags()->sync($request->tags);
 
-        $post->tag()->sync($request->tags);
-
-        return redirect('/admin/posts')->with('message', 'Successfully Edited Post');
+        return redirect()->route('admin.show_posts')->with('message', 'Successfully Updated Post');
     }
 
 
     public function destroyPost($id)
     {
         $post = Post::find($id);
-        $post->tag()->detach();
+        $post->tags()->detach();
         $post->delete();
 
-        return redirect('/admin/posts')->with('message', 'Successfully Deleted Post');
+        return redirect()->route('admin.show_posts')->with('message', 'Successfully Deleted Post');
     }
 }

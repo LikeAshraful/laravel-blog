@@ -44,8 +44,8 @@ Route::middleware(['Author'])->group(function () {
 
 Route::middleware(['admin'])->group(function () {
 
-    Route::get('/admin/edit/{id}', [PostController::class, 'editPost'])->name('admin.edit_posts');
-    Route::post('/admin/edit/{id}', [PostController::class, 'updatePost'])->name('admin.edit_posts');
+    Route::get('/admin/edit/{id}', [PostController::class, 'editPost'])->name('admin.edit_post');
+    Route::post('/admin/edit/{id}', [PostController::class, 'updatePost'])->name('admin.edit_post');
     Route::get('/post/delete/{id}', [PostController::class, 'destroyPost'])->name('admin.post_delete');
 
     // Category

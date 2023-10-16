@@ -52,7 +52,7 @@
 
                     <div class="tags">
 
-                        @foreach ($post->tag as $tag)
+                        @foreach ($post->tags as $tag)
                             <span class="label label-primary">
                                 <a href="/blog/show/tag/{{ $tag->name }}">{{ $tag->name }}</a>
                             </span>&nbsp;&nbsp;

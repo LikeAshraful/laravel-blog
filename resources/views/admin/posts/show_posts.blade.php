@@ -62,7 +62,7 @@
                                             <p class="font-medium text-black dark:text-white">{{ $key + 1 }}</p>
                                         </td>
                                         <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                                            <img width="80" src="/{{ $post->img_thumb }}" />
+                                            <img width="80" src="{{ url($post->img_thumb) }}" />
                                         </td>
                                         <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                                             <p class="inline-flex rounded-full  py-1 px-3 text-sm font-medium">
@@ -113,7 +113,7 @@
                                                             fill="" />
                                                     </svg>
                                                 </a>
-                                                <a href="{{ route('admin.edit_posts', $post->id) }}"
+                                                <a href="{{ route('admin.edit_post', $post->id) }}"
                                                     class="hover:text-primary">
                                                     <svg class="fill-current" width="18" height="18"
                                                         viewBox="0 0 18 18" fill="none"

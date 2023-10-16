@@ -53,4 +53,14 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function scopeAuthor($query)
+    {
+        return $query->where('role_id', 2);
+    }
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
 }

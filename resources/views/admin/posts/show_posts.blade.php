@@ -19,7 +19,7 @@
             </div>
             <!-- Breadcrumb End -->
 
-
+            @include('admin.includes.message')
 
             <!-- ====== Table Section Start -->
             <div class="flex flex-col gap-10">
@@ -43,6 +43,9 @@
                                     </th>
                                     <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                                         Category
+                                    </th>
+                                    <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                                        Author
                                     </th>
                                     <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                                         Status
@@ -77,9 +80,23 @@
                                             </p>
                                         </td>
                                         <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                                            <p class="inline-flex rounded-full  py-1 px-3 text-sm font-medium text-success">
-                                                active
+                                            <p class="inline-flex rounded-full  py-1 px-3 text-sm font-medium">
+                                                {{ $post->author?->name }}
                                             </p>
+                                        </td>
+                                        <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                                            @if ($post->status == 1)
+                                                <p
+                                                    class="inline-flex rounded-full  py-1 px-3 text-sm font-medium text-success">
+                                                    Published
+                                                </p>
+                                            @else
+                                                <p
+                                                    class="inline-flex rounded-full  py-1 px-3 text-sm font-medium text-warning">
+                                                    Draft
+                                                </p>
+                                            @endif
+
                                         </td>
                                         <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                                             <div class="flex items-center space-x-3.5">

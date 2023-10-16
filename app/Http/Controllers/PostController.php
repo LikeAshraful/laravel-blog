@@ -81,50 +81,49 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.posts.add_post')->with('categories', $categories)->with('tags', $tags);
+        $authors = User::isActive()->get();
+
+        return view('admin.posts.add_post')->with([
+            'categories' => $categories,
+            'tags' => $tags,
+            'authors' => $authors
+        ]);
     }
 
     public function storePost(Request $request)
     {
-
-        $validation = Validator::make($request->all(), [
+        $request->validate([
             'title' => 'required | unique:posts',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png'
         ]);
 
-        if ($validation->fails()) {
-            return redirect()->back()->withInput()
-                ->with('errors', $validation->errors());
-        }
-
         $post = new Post;
-
         $post->title = $request->input('title');
+        $post->slug = Str::slug($request->input('title'));
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
+        $post->status = $request->input('status') == "on" ? 1 : 0;
+        $post->author_id = $request->input('author');
 
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $destination_path = 'uploads/';
+            $filename = Str::random(6) . '_' . $file->getClientOriginalName();
+            $file->move($destination_path, $filename);
 
-        // upload the image //
-        $file = $request->file('image');
+            Image::make('uploads/' . $filename)->resize(100, 100)->save('uploads/thumbs/' . $filename, 50);
 
-        $destination_path = 'uploads/';
-        $filename = Str::random(6) . '_' . $file->getClientOriginalName();
-        $file->move($destination_path, $filename);
-
-        $thumb = Image::make('uploads/' . $filename)->resize(100, 100)->save('uploads/thumbs/' . $filename, 50);
-
-        $post->img_name = $filename;
-        $post->img_path = $destination_path . $filename;
-        $post->img_thumb = 'uploads/thumbs/' . $filename;
-
+            $post->img_name = $filename;
+            $post->img_path = $destination_path . $filename;
+            $post->img_thumb = 'uploads/thumbs/' . $filename;
+        }
 
         $post->user_id = Auth::user()->id;
         $post->save();
-
         $post->tag()->sync($request->tags, false);
 
-        return redirect('/admin/posts')->with('message', 'Successfully Created Post');
+        return redirect()->route('admin.show_posts')->with('message', 'Successfully Created Post');
     }
 
     public function showPost($id)
@@ -149,7 +148,6 @@ class PostController extends Controller
         foreach ($categories as $category) {
             $cats[$category->id] = $category->name;
         }
-
 
         $tags = Tag::all();
         $tags2 = array();
@@ -217,7 +215,7 @@ class PostController extends Controller
 
         $post->tag()->sync($request->tags);
 
-        return redirect('/admin/posts')->with('message', 'Succesfully Edited Post');
+        return redirect('/admin/posts')->with('message', 'Successfully Edited Post');
     }
 
 
@@ -227,6 +225,6 @@ class PostController extends Controller
         $post->tag()->detach();
         $post->delete();
 
-        return redirect('/admin/posts')->with('message', 'Succesfully Deleted Post');
+        return redirect('/admin/posts')->with('message', 'Successfully Deleted Post');
     }
 }

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Tag;
-use Validator;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class TagController extends Controller
 {
@@ -15,10 +14,10 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $tags = Tag::paginate(6);
-        return view('admin.tags.add_tag')->with('tags',$tags);
+        return view('admin.tags.add_tag')->with('tags', $tags);
     }
 
     /**
@@ -28,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.add_tag');   
+        return view('admin.add_tag');
     }
 
     /**
@@ -39,19 +38,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $validation = Validator::make($request->all(), [
+        $request->validate([
             'name' => 'required|unique:tags'
         ]);
-        
-        if($validation->fails()){
-            return redirect()->back()->withInput()->with('errors', $validation->errors());
-        }
-        
+
         $tag = new Tag;
         $tag->name = $request->input('name');
         $tag->save();
-        
-        return redirect('/admin/tag')->with('message', 'Succesfully Tag Created');
+
+        return redirect('/admin/tag')->with('message', 'Successfully Tag Created');
     }
 
     /**
@@ -62,7 +57,6 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -74,8 +68,13 @@ class TagController extends Controller
     public function edit($id)
     {
         $tag = Tag::find($id);
-        
-        return view('admin.tags.edit_tag')->with('tag', $tag);
+        $tags = Tag::paginate(6);
+
+
+        return view('admin.tags.edit_tag', [
+            'tag' => $tag,
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -87,22 +86,15 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validation = Validator::make($request->all(), [
-            'name' => 'required|unique:tags'
+        $request->validate([
+            'name' => 'required|unique:tags,name,' . $id
         ]);
-        
-        if($validation->fails()){
-            return redirect()->back()->withInput()->with('errors',$validation->errors());
-        }
-        
+
         $tag = Tag::find($id);
-        
         $tag->name = $request->name;
-        
         $tag->save();
-        
-        return redirect('/admin/tag')->with('message','Tag Successfully Edited.');
-        
+
+        return redirect('/admin/tag')->with('message', 'Tag Successfully Updated.');
     }
 
     /**
@@ -114,11 +106,9 @@ class TagController extends Controller
     public function destroy($id)
     {
         $tag = Tag::find($id);
-        
         $tag->post()->detach();
-        
         $tag->delete();
-        
-        return redirect('/admin/tag')->with('message','Tag Successfully Deleted.');
+
+        return redirect('/admin/tag')->with('message', 'Tag Successfully Deleted.');
     }
 }

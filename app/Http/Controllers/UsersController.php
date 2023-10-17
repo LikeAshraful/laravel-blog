@@ -21,8 +21,7 @@ class UsersController extends Controller
     public function create()
     {
 
-        $roles = Role::pluck('name', 'id')->all();
-
+        $roles = Role::select('id', 'name')->get();
         return view('admin.users.create')->with('roles', $roles);
     }
 
@@ -57,14 +56,13 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::lists('name', 'id')->all();
+        $roles = Role::pluck('name', 'id')->all();
         return view('admin.users.edit')->with('user', $user)->with('roles', $roles);
     }
 
     public function update(Request $request, $id)
     {
         $validation = Validator::make($request->all(), [
-
             'name' => 'required | max:255',
             'email' => 'required',
             'role_id' => 'required',

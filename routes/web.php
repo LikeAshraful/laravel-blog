@@ -38,8 +38,8 @@ Route::middleware(['Author'])->group(function () {
     Route::get('/post/create', [PostController::class, 'createPost'])->name('admin.create_post_form');
     Route::post('/post/create', [PostController::class, 'storePost'])->name('admin.add_post');
     // Route for Tag
-    Route::get('/admin/tag', [TagController::class, 'index'])->name('admin.tags.add_tag');
-    Route::post('/admin/tag/add', [TagController::class, 'store'])->name('tag.store');
+    Route::get('/admin/tag', [TagController::class, 'index'])->name('admin.tags.index');
+    Route::post('/admin/tag/add', [TagController::class, 'store'])->name('admin.tags.store');
 });
 
 Route::middleware(['admin'])->group(function () {
@@ -59,15 +59,15 @@ Route::middleware(['admin'])->group(function () {
     // Comment
     Route::post('/comments/{post_id}', [CommentsController::class, 'store'])->name('comments.store');
     // Tag
-    Route::get('/admin/tag/edit/{id}', [TagController::class, 'edit'])->name('admin.tags.edit_tag');
-    Route::post('/admin/tag/edit/{id}', [TagController::class, 'update'])->name('admin.tags.edit_tag');
-    Route::get('/admin/tag/delete/{id}', [TagController::class, 'destroy'])->name('admin.tags.add_tag');
+    Route::get('/admin/tag/edit/{id}', [TagController::class, 'edit'])->name('admin.tags.edit');
+    Route::post('/admin/tag/edit/{id}', [TagController::class, 'update'])->name('admin.tags.update');
+    Route::get('/admin/tag/delete/{id}', [TagController::class, 'destroy'])->name('admin.tags.delete');
 
 
     // Users
     Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users.index');
     Route::get('/admin/user/add', [UsersController::class, 'create'])->name('admin.users.create');
-    Route::post('/admin/user/add', [UsersController::class, 'store'])->name('admin.users.create');
+    Route::post('/admin/user/add', [UsersController::class, 'store'])->name('admin.users.store');
     Route::get('admin/user/{id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
     Route::post('admin/user/{id}/edit', [UsersController::class, 'update'])->name('admin.users.edit');
 

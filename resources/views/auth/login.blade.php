@@ -1,84 +1,52 @@
+@extends('auth.layout.main')
+@section('title', 'Login')
 
-@extends('partials.layout.main')
-
-@section('title','Login')
-    
-    @section('nav')
-        @include('partials.nav')
-    @endsection
 
 @section('content')
 
-<section class="blog-content">
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h1 style="padding-top:30 px;padding-bottom:50px;">Welcome To LikeAshraful BLOG</h1>
-                
-                <div class="panel panel-info" style="padding-bottom:50px;">
-                    <div class="panel-heading">Login</div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                            {!! csrf_field() !!}
-    
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-    
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-    
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-    
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Password</label>
-    
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password">
-    
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-    
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-sign-in"></i>Login
-                                    </button>
-    
-                                    <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                                </div>
-                                
-                                <div class= "col-md-3">
-                                    <a href="/register">Register</a>
-                                </div>
-                            </div>
-                        </form>
+    <div class="py-6">
+        <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl ">
+            <div class="hidden lg:block lg:w-1/2 bg-cover"
+                style="background-image:url('https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')">
+            </div>
+            <div class="w-full p-8 lg:w-1/2">
+                <h2 class="text-2xl font-semibold text-gray-700 text-center">Brand</h2>
+                <p class="text-xl text-gray-600 text-center">Welcome back!</p>
+
+                <form method="POST" action="{{ url('/login') }}">
+                    @csrf
+
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="border-b w-1/5 lg:w-1/4"></span>
+                        <a href="#" class="text-xs text-center text-gray-500 uppercase">or login with email</a>
+                        <span class="border-b w-1/5 lg:w-1/4"></span>
                     </div>
+                    <div class="mt-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                        <input
+                            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                            type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex justify-between">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <a href="{{ url('/password/reset') }}" class="text-xs text-gray-500">Forget Password?</a>
+                        </div>
+                        <input
+                            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                            type="password" name="password">
+                    </div>
+                    <div class="mt-8">
+                        <button
+                            class="bg-primary text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Login</button>
+                    </div>
+                </form>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="border-b w-1/5 md:w-1/4"></span>
+                    <a href="{{ url('/register') }}" class="text-xs text-gray-500 uppercase">or sign up</a>
+                    <span class="border-b w-1/5 md:w-1/4"></span>
                 </div>
             </div>
         </div>
     </div>
-
-</section>
 @endsection

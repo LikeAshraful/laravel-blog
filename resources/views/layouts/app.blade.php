@@ -2,100 +2,161 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
-        integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
-        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
     <style>
         body {
-            font-family: 'Lato';
+            font-family: "Raleway", sans-serif;
         }
 
-        .fa-btn {
-            margin-right: 6px;
+        button[data-toggle-navbar][data-is-open="true"] #line-1 {
+            transform: translateY(0.375rem) rotate(40deg);
+        }
+
+        button[data-toggle-navbar][data-is-open="true"] #line-2 {
+            transform: scaleX(0);
+            opacity: 0;
+        }
+
+        button[data-toggle-navbar][data-is-open="true"] #line-3 {
+            transform: translateY(-0.375rem) rotate(-40deg);
+        }
+
+        .juice {
+            background-image: url('https://i.ibb.co/SN2Sp4T/juice.png');
+        }
+
+        .juice2 {
+            background-image: url('https://i.ibb.co/yyMXMSF/juice2.png');
+        }
+
+        .juice3 {
+            z-index: 10;
+            position: relative;
+        }
+
+        .juice3::after {
+            content: '';
+            position: absolute;
+            opacity: .2;
+            z-index: -999;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('https://previews.123rf.com/images/olgasiv/olgasiv1403/olgasiv140300026/27343111-image-en-noir-sur-un-fond-blanc-dessin-de-l%C3%A9gumes-de-fruits-et-de-baies-.jpg');
+        }
+
+        .text-primary {
+            color: #f9b529;
+        }
+
+        .text-primary-lite {
+            color: #fac251;
+        }
+
+        .text-secondary {
+            color: #294356;
+        }
+
+        .text-secondary-lite {
+            color: #d5dee5;
+        }
+
+        .bg-primary {
+            background-color: #f9b529;
+        }
+
+        .bg-primary-lite {
+            background-color: #fac251;
+        }
+
+        .bg-secondary {
+            background-color: #294356;
+        }
+
+        .bg-secondary-lite {
+            background-color: #d5dee5;
+        }
+
+        .product {
+            background-image: url('https://i.ibb.co/L00dH6V/2021-11-07-14h07-51.png');
+        }
+
+        .product2 {
+            background-image: url('https://i.ibb.co/1fZMKPh/2021-11-07-14h08-07.png');
+        }
+
+        .product3 {
+            background-image: url('https://i.ibb.co/f9tpvV3/2021-11-07-14h08-32.png');
+        }
+
+        .product4 {
+            background-image: url('https://i.ibb.co/42BsKQ2/2021-11-07-14h08-17.png');
         }
     </style>
+
+
+    @stack('css')
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+
+    <title>
+        Multi hotel main branch
+    </title>
 </head>
 
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
-            </div>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
+<body>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="#"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                            class="fa fa-sign-out fa-fw"></i> Logout</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- ===== Main Content Start ===== -->
+    <div class="min-h-screen bg-white">
+        @include('partials.header')
+        <main>
+            @yield('content')
+        </main>
+        @include('partials.footer')
+    </div>
+    <!-- ===== Main Content End ===== -->
 
-    @yield('content')
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
-        integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous">
+    <script>
+        const btnHumb = document.querySelector("[data-toggle-navbar]")
+        const navbar = document.querySelector("[data-navbar]")
+        const overlay = document.querySelector("[data-nav-overlay]")
+        if (btnHumb && navbar) {
+            const toggleBtnAttr = () => {
+                const isOpen = btnHumb.getAttribute("data-is-open")
+                btnHumb.setAttribute("data-is-open", isOpen === "true" ? "false" : "true")
+                if (isOpen === "false") {
+                    overlay.classList.toggle("hidden")
+                } else {
+                    overlay.classList.add("hidden")
+                }
+            }
+            btnHumb.addEventListener("click", () => {
+                navbar.classList.toggle("invisible")
+                navbar.classList.toggle("opacity-0")
+                navbar.classList.toggle("translate-y-10")
+                toggleBtnAttr()
+            })
+
+            overlay.addEventListener("click", () => {
+                navbar.classList.add("invisible")
+                navbar.classList.add("opacity-0")
+                navbar.classList.add("translate-y-10")
+                toggleBtnAttr()
+            })
+        }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"
-        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
-    </script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    @stack('scripts')
 </body>
 
 </html>

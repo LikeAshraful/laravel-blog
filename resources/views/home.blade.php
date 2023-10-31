@@ -1,208 +1,115 @@
-@extends('partials.layout.main')
+@extends('layouts.app')
+@section('title', 'Multi Hotel')
 
-@section('title', 'web developer')
-
-@section('nav')
-@include('partials.nav_home')
-@endsection
+@push('css')
+@endpush
 
 @section('content')
- <header>
-        <div class="container">
-            
-            <div class="col-md-12 ">
-                    <img class="img-circle header-img" src="assets/img/profile.jpg" width="250" height="250"></img>    
-                </div>
-            <div class="intro-text">
-                <div class="intro-heading">Ashraful Islam Palash</div>
-                <div class="intro-lead-in">Web Developer & Laravel Hunter</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
-            </div>
-        </div>
-    </header>        
-        
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">About Me</h2>
-                    <hr class="light">
-                    <p class="text-faded">This is Ashraful Islam from Bangladesh.I am a web Developer
-                        who appreciates to create professional and dynamic websites using Laravel PHP Framework.I define myself as 
-                        a Web Application Developer, Programmer and CMS Customizer with a creative twist.
-                    </p>
-                    <a href="/resume" class="page-scroll btn btn-default sr-button" data-sr-id="6" >See My Resume</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!--START WORK SECTION-->
-	
-	<section id="work">
-	        <div class="container wow fadeInUp" data-wow-offset="10" data-wow-duration="1.5s" data-wow-delay=".3s">
-	            <div class="row">
-	                <div class="col-md-12 text-center">
-	                    <h2>Works</h2>
-	                </div>
-	            </div>
-	            <div class="row">
-	            	@foreach($works as $work)
-	                <div class="col-md-4 col-sm-6 work-single">
-	                    <a href="#{{ $work->id}}" class="work-link" data-keyboard="true" data-toggle="modal">                      
-	                        
-	                        <div class="caption">
-	                            <div class="caption-content">
-	                                <i class="fa fa-search-plus fa-3x"></i>
-					<h3>{{ $work->title }}</h3>
-	                            </div>
-	                        </div>
-	                        <img src="{{ $work->img_path }}" class="img-responsive" alt="{{ $work->title }}"  style="width:450px;height:300px;">
-	                    </a>
-	                    
-	                </div>
-	                @endforeach
-	            </div>
-	        </div>
-	    </section>
-    
-    <!--END WORK SECTION-->
-
-    <!--START WORK MODALS-->
-    
-    @foreach($works as $work)
-    
-    <div class="work-modal modal fade" id="{{ $work->id }}" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false" data-keyboard="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
+    <section class="juice3 bg-gray-100 bg-opacity-90 py-10">
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row">
+            <!-- left -->
+            <div class="juice relative lg:w-2/3 rounded-xl bg-secondary-lite bg-cover p-8 md:p-16">
+                <p class="max-w-sm text-secondary text-3xl md:text-4xl font-semibold">Active Summer With Juice Milk
+                    300ml</p>
+                <p class="max-w-xs pr-10 text-secondary font-semibold mt-8">New arrivals with naturre fruits, juice
+                    milks, essential for summer</p>
+                <button class="mt-20 bg-white font-semibold px-8 py-2 rounded">Read More..</button>
+                <div class="absolute bottom-8 right-8 md:bottom-5 md:right-5 flex">
+                    <a href class="h-6 w-6 flex items-center justify-center rounded-md bg-white">
+                        <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far"
+                            data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
+                            class="svg-inline--fa fa-chevron-left fa-w-8 fa-3x">
+                            <path fill="currentColor"
+                                d="M231.293 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L70.393 256 251.092 74.87c4.686-4.686 4.686-12.284 0-16.971L231.293 38.1c-4.686-4.686-12.284-4.686-16.971 0L4.908 247.515c-4.686 4.686-4.686 12.284 0 16.971L214.322 473.9c4.687 4.686 12.285 4.686 16.971-.001z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href class="ml-1.5 h-6 w-6 flex items-center justify-center rounded-md bg-yellow-400">
+                        <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far"
+                            data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 256 512" class="svg-inline--fa fa-chevron-right fa-w-8 fa-3x">
+                            <path fill="currentColor"
+                                d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z">
+                            </path>
+                        </svg>
+                    </a>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                	
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>{{ $work->title }}</h2>
-                            <img src="{{ $work->img_path }}" class="img-responsive img-centered" alt="{{ $work->img_name }}">
-                            <p>
-                            	{{ $work->description }}
-                            </p>
-                            <ul class="list-inline item-details">
-                                
-                                <li>Date:
-                                    <strong><a href="#">{{ $work->date }}</a></strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="#">{{ $work->service }}</a></strong>
-                                </li>
-                            </ul>
-                            
-                            <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
-                        </div>
-                    </div>
-                    
-
+            <!-- right -->
+            <div class="juice2 mt-6 lg:mt-0 lg:ml-6 lg:w-1/3 rounded-xl bg-primary-lite bg-cover p-8 md:p-16">
+                <div class="max-w-sm">
+                    <p class="text-3xl md:text-4xl font-semibold uppercase">20% sale off</p>
+                    <p class="mt-8 font-semibold">Syncthetic seeds<br />2.0 OZ</p>
+                    <button class="mt-20 bg-white font-semibold px-8 py-2 rounded">Read More..</button>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--END WORK MODALS-->
-    @endforeach
-    
-    
-    
-    <!-- Work Progress Counter -->     
-
-    <section id="work-progress">
-        <div class="container">
-            <div class="row">
-                <div class="service-counter">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                        <div class="counter text-center">         
-                            <span class="countup">4502</span>
-                            <p>Project Done</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                        <div class="counter text-center">           
-                            <span class="countup">0085</span>
-                            <p>Happy Clients</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                        <div class="counter text-center">          
-                            <span class="countup">0451</span>
-                            <p>Job Hired</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                        <div class="counter text-center">           
-                            <span class="countup">0089</span>
-                            <p>New Project</p>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- row -->
-        </div> <!-- Container -->
-    </section> <!-- page-work-progress -->
-
-    
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <h2>My Skills</h2>
-            <div class="row">
-                @foreach($skills as $skill)
-                <div class="bar" data-percent="{{ $skill->skill_percent }}">
-            		<h3>{{ $skill->skill_title }}</h3>
-            	 </div>
-                @endforeach
             </div>
         </div>
     </section>
-    
-    
-    <!-- Portfolio Modal 1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h2>Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-responsive img-centered" src="http://placehold.it/900x300" alt="">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <p>
-                                    <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-                                <ul class="list-inline">
-                                    <li>Date: July 2014</li>
-                                    <li>Client: Round Icons</li>
-                                    <li>Category: Graphic Design</li>
-                                </ul>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+    <section class="container mx-auto pt-12 bg-white">
+        <!-- title -->
+        <div class="relative flex items-end font-bold">
+            <h2 class="text-2xl">Browse by Category</h2>
+            <a href class="ml-10 flex items-center text-gray-400">
+                <span class="text-sm">All Categories</span>
+                <svg class="ml-3 h-3.5" aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-right"
+                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
+                    class="svg-inline--fa fa-chevron-right fa-w-8 fa-9x">
+                    <path fill="currentColor"
+                        d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z">
+                    </path>
+                </svg>
+            </a>
+            <div class="ml-auto flex">
+                <a href class="h-6 w-6 flex items-center justify-center rounded-md bg-gray-100">
+                    <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far"
+                        data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
+                        class="svg-inline--fa fa-chevron-left fa-w-8 fa-3x">
+                        <path fill="currentColor"
+                            d="M231.293 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L70.393 256 251.092 74.87c4.686-4.686 4.686-12.284 0-16.971L231.293 38.1c-4.686-4.686-12.284-4.686-16.971 0L4.908 247.515c-4.686 4.686-4.686 12.284 0 16.971L214.322 473.9c4.687 4.686 12.285 4.686 16.971-.001z">
+                        </path>
+                    </svg>
+                </a>
+                <a href class="ml-1.5 h-6 w-6 flex items-center justify-center rounded-md bg-yellow-400">
+                    <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far"
+                        data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
+                        class="svg-inline--fa fa-chevron-right fa-w-8 fa-3x">
+                        <path fill="currentColor"
+                            d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z">
+                        </path>
+                    </svg>
+                </a>
             </div>
         </div>
-    </div>
+        <!-- cards -->
+        <div class="mt-10">
+            <ul class="-m-3.5 flex">
+                <li
+                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+                    <img class="max-h-20" src="https://i.ibb.co/Smq7sZK/2021-11-07-13h26-50.png" alt="" />
+                    <span class="font-semibold">Fruits & Vegetables</span>
+                </li>
+                <li
+                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+                    <img class="max-h-20" src="https://i.ibb.co/PwYJkQs/2021-11-07-13h39-41.png" alt="" />
+                    <span class="font-semibold">Breads & Sweets</span>
+                </li>
+                <li
+                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+                    <img class="max-h-20" src="https://i.ibb.co/Hx3vbFx/2021-11-07-13h39-52.png" alt="" />
+                    <span class="font-semibold">Frozen Seafoods</span>
+                </li>
+                <li
+                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+                    <img class="max-h-20" src="https://i.ibb.co/4PCjhsS/2021-11-07-13h40-02.png" alt="" />
+                    <span class="font-semibold">Raw Meats</span>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-    
-    
-    
 @endsection
+
+@push('scripts')
+@endpush

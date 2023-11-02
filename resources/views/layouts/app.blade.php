@@ -24,15 +24,7 @@
 
         button[data-toggle-navbar][data-is-open="true"] #line-3 {
             transform: translateY(-0.375rem) rotate(-40deg);
-        }
-
-        .juice {
-            background-image: url('https://i.ibb.co/SN2Sp4T/juice.png');
-        }
-
-        .juice2 {
-            background-image: url('https://i.ibb.co/yyMXMSF/juice2.png');
-        }
+        }       
 
         .juice3 {
             z-index: 10;
@@ -100,8 +92,8 @@
         }
     </style>
 
-
     @stack('css')
+
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 

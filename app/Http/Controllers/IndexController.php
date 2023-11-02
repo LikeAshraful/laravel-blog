@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Post;
 use App\Work;
 use App\Skill;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function getIndex(){
-        
-        $works = Work::all();
-        $skills = Skill::all();
-        return view('home')->with('works', $works)->with('skills',$skills);
+    public function getIndex()
+    {
+        $latestPosts = Post::where('status', 1)->latest()->take(3)->get();
+        return view('home', [
+            'latestPosts' => $latestPosts
+        ]);
     }
-    
+
     public function getResume()
     {
         $skills = Skill::all();
         return view('resume.index')->with('skills', $skills);
     }
-    
 }

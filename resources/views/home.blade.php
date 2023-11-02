@@ -2,6 +2,15 @@
 @section('title', 'Multi Hotel')
 
 @push('css')
+    <style>
+        .juice {
+            background-image: url('https://i.ibb.co/SN2Sp4T/juice.png');
+        }
+
+        .juice2 {
+            background-image: url('https://i.ibb.co/yyMXMSF/juice2.png');
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -37,7 +46,7 @@
                 </div>
             </div>
             <!-- right -->
-            <div class="juice2 mt-6 lg:mt-0 lg:ml-6 lg:w-1/3 rounded-xl bg-primary-lite bg-cover p-8 md:p-16">
+            <div class="juice2 lg:mt-0 lg:ml-6 lg:w-1/3 rounded-xl bg-primary-lite bg-cover p-8 md:p-16">
                 <div class="max-w-sm">
                     <p class="text-3xl md:text-4xl font-semibold uppercase">20% sale off</p>
                     <p class="mt-8 font-semibold">Syncthetic seeds<br />2.0 OZ</p>
@@ -52,7 +61,7 @@
         <div class="relative flex items-end font-bold">
             <h2 class="text-2xl">Browse by Category</h2>
             <a href class="ml-10 flex items-center text-gray-400">
-                <span class="text-sm">All Categories</span>
+                <span class="text-sm">Latest</span>
                 <svg class="ml-3 h-3.5" aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-right"
                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
                     class="svg-inline--fa fa-chevron-right fa-w-8 fa-9x">
@@ -88,17 +97,17 @@
                 <li
                     class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
                     <img class="max-h-20" src="https://i.ibb.co/Smq7sZK/2021-11-07-13h26-50.png" alt="" />
-                    <span class="font-semibold">Fruits & Vegetables</span>
+                    <span class="font-semibold">Popular</span>
                 </li>
                 <li
                     class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
                     <img class="max-h-20" src="https://i.ibb.co/PwYJkQs/2021-11-07-13h39-41.png" alt="" />
-                    <span class="font-semibold">Breads & Sweets</span>
+                    <span class="font-semibold">Special</span>
                 </li>
                 <li
                     class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
                     <img class="max-h-20" src="https://i.ibb.co/Hx3vbFx/2021-11-07-13h39-52.png" alt="" />
-                    <span class="font-semibold">Frozen Seafoods</span>
+                    <span class="font-semibold">Laravel</span>
                 </li>
                 <li
                     class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">

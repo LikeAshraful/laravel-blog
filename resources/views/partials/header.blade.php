@@ -78,8 +78,6 @@
                     <span class="truncate max-w-24">Special</span>
                 </li>
 
-
-
                 <li class="px-2 lg:px-3 flex items-center">
                     <span>Shop</span>
                     <svg class="ml-1 h-7 lg:h-8 p-2 pr-0 text-gray-500" aria-hidden="true" focusable="false"
@@ -92,7 +90,7 @@
                 </li>
             </ul>
         </nav>
-        <a href="" class="ml-auto flex-shrink-0 flex items-center">
+        {{-- <a href="" class="ml-auto flex-shrink-0 flex items-center">
             <svg class="h-7 lg:h-8 p-1 sm:p-2 md:text-gray-500" aria-hidden="true" focusable="false" data-prefix="far"
                 data-icon="sync-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                 class="svg-inline--fa fa-sync-alt fa-w-16 fa-9x">
@@ -101,6 +99,6 @@
                 </path>
             </svg>
             <span class="hidden sm:inline ml-1 font-bold">Recently Viewed</span>
-        </a>
+        </a> --}}
     </div>
 </header>

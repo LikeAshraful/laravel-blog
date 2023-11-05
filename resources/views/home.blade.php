@@ -60,7 +60,7 @@
         <!-- title -->
         <div class="relative flex items-end font-bold">
             <h2 class="text-2xl">Browse by Category</h2>
-            <a href class="ml-10 flex items-center text-gray-400">
+            {{-- <a href class="ml-10 flex items-center text-gray-400">
                 <span class="text-sm">Latest</span>
                 <svg class="ml-3 h-3.5" aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-right"
                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
@@ -69,7 +69,7 @@
                         d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z">
                     </path>
                 </svg>
-            </a>
+            </a> --}}
             <div class="ml-auto flex">
                 <a href class="h-6 w-6 flex items-center justify-center rounded-md bg-gray-100">
                     <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far"
@@ -94,26 +94,13 @@
         <!-- cards -->
         <div class="mt-10">
             <ul class="-m-3.5 flex">
-                <li
-                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
-                    <img class="max-h-20" src="https://i.ibb.co/Smq7sZK/2021-11-07-13h26-50.png" alt="" />
-                    <span class="font-semibold">Popular</span>
-                </li>
-                <li
-                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
-                    <img class="max-h-20" src="https://i.ibb.co/PwYJkQs/2021-11-07-13h39-41.png" alt="" />
-                    <span class="font-semibold">Special</span>
-                </li>
-                <li
-                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
-                    <img class="max-h-20" src="https://i.ibb.co/Hx3vbFx/2021-11-07-13h39-52.png" alt="" />
-                    <span class="font-semibold">Laravel</span>
-                </li>
-                <li
-                    class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
-                    <img class="max-h-20" src="https://i.ibb.co/4PCjhsS/2021-11-07-13h40-02.png" alt="" />
-                    <span class="font-semibold">Raw Meats</span>
-                </li>
+                @foreach ($categories as $category)
+                    <li
+                        class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+                        <img class="max-h-20" src="https://i.ibb.co/Smq7sZK/2021-11-07-13h26-50.png" alt="" />
+                        <span class="font-semibold">{{ $category->name }}</span>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </section>

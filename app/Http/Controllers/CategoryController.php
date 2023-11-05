@@ -14,7 +14,7 @@ class CategoryController extends Controller
 
     public function getIndex()
     {
-        $categories = Category::paginate(2);
+        $categories = Category::paginate(5);
         return view('admin.category.add_category')->with('categories', $categories);
     }
 

@@ -9,7 +9,7 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "autoprefixer": "^10.4.16",
-    "axios": "^1.1.2",
+    "axios": "^1.6.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-prismjs": "^2.1.0",
     "css-loader": "^6.5.1",
@@ -29,11 +29,13 @@
   },
   "dependencies": {
     "@alpinejs/persist": "^3.12.0",
-    "@vitejs/plugin-vue": "^4.4.0",
+    "@vitejs/plugin-vue": "^4.5.2",
     "alpinejs": "^3.10.3",
     "apexcharts": "^3.36.3",
     "choices.js": "^10.2.0",
     "flatpickr": "^4.6.13",
-    "jsvectormap": "^1.5.1"
+    "jsvectormap": "^1.5.1",
+    "vue": "^3.2.36",
+    "vue-loader": "^17.3.1"
   }
 }

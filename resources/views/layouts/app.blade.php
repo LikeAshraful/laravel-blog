@@ -24,7 +24,7 @@
 
         button[data-toggle-navbar][data-is-open="true"] #line-3 {
             transform: translateY(-0.375rem) rotate(-40deg);
-        }       
+        }
 
         .juice3 {
             z-index: 10;
@@ -107,6 +107,7 @@
 
 <body id="app">
 
+
     <!-- ===== Main Content Start ===== -->
     <div class="min-h-screen bg-white">
         @include('partials.header')
@@ -117,7 +118,7 @@
     </div>
     <!-- ===== Main Content End ===== -->
 
-    <script>
+    {{-- <script>
         const btnHumb = document.querySelector("[data-toggle-navbar]")
         const navbar = document.querySelector("[data-navbar]")
         const overlay = document.querySelector("[data-nav-overlay]")
@@ -145,7 +146,7 @@
                 toggleBtnAttr()
             })
         }
-    </script>
+    </script> --}}
     @stack('scripts')
 </body>
 

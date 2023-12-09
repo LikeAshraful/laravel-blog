@@ -4,57 +4,20 @@
 @push('css')
     <style>
         /* .juice {
-                background-image: url('https://i.ibb.co/SN2Sp4T/juice.png');
-            }
+                    background-image: url('https://i.ibb.co/SN2Sp4T/juice.png');
+                }
 
-            .juice2 {
-                background-image: url('https://i.ibb.co/yyMXMSF/juice2.png');
-            } */
+                .juice2 {
+                    background-image: url('https://i.ibb.co/yyMXMSF/juice2.png');
+                } */
     </style>
 @endpush
 
 @section('content')
 
-    {{-- <section class="bg-green container mx-auto pt-12 bg-white">
-        <!-- title -->
-        <div class="relative flex items-end font-bold">
-            <h2 class="text-2xl">Browse by Category</h2>
-            <div class="ml-auto flex">
-                <a href class="h-6 w-6 flex items-center justify-center rounded-md bg-gray-100">
-                    <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far"
-                        data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
-                        class="svg-inline--fa fa-chevron-left fa-w-8 fa-3x">
-                        <path fill="currentColor"
-                            d="M231.293 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L70.393 256 251.092 74.87c4.686-4.686 4.686-12.284 0-16.971L231.293 38.1c-4.686-4.686-12.284-4.686-16.971 0L4.908 247.515c-4.686 4.686-4.686 12.284 0 16.971L214.322 473.9c4.687 4.686 12.285 4.686 16.971-.001z">
-                        </path>
-                    </svg>
-                </a>
-                <a href class="ml-1.5 h-6 w-6 flex items-center justify-center rounded-md bg-yellow-400">
-                    <svg class="h-3 text-gray-700" aria-hidden="true" focusable="false" data-prefix="far"
-                        data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
-                        class="svg-inline--fa fa-chevron-right fa-w-8 fa-3x">
-                        <path fill="currentColor"
-                            d="M24.707 38.101L4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z">
-                        </path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <!-- cards -->
-        <div class="mt-10">
-            <ul class="-m-3.5 flex">
-                @foreach ($categories as $category)
-                    <li
-                        class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
-                        <img class="max-h-20" src="https://i.ibb.co/Smq7sZK/2021-11-07-13h26-50.png" alt="" />
-                        <span class="font-semibold">{{ $category->name }}</span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </section> --}}
-
-    {{-- <section class="juice3 bg-gray-100 bg-opacity-90 py-10">
+    <feature-post></feature-post>
+    {{-- 
+    <section class="juice3 bg-gray-100 bg-opacity-90 py-10">
         <div class="container mx-auto px-4 flex flex-col lg:flex-row">
             <!-- left -->
             <div class="juice relative lg:w-2/3 rounded-xl bg-secondary-lite bg-cover p-8 md:p-16">
@@ -95,13 +58,12 @@
         </div>
     </section> --}}
 
-    <section class="bg-white dark:bg-gray-900">
+    {{-- <section class="bg-white dark:bg-gray-900">
         <div class="container px-6 py-10 mx-auto">
-            {{-- <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">From the blog</h1> --}}
-
             <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
                 <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
-                    src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"alt="">
+                    src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                    alt="">
 
                 <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
                     <p class="text-sm text-blue-500 uppercase">category</p>
@@ -131,12 +93,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="bg-gray-100 text-gray-900 py-20">
         <div class="container px-5 py-5 mx-auto">
             <div class="flex flex-wrap -m-4">
-                <!--start here-->
                 <div class="p-4 md:w-1/4">
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="w-full">
@@ -371,7 +332,6 @@
                         </div>
                     </div>
                 </div>
-                <!--End here-->
             </div>
         </div>
     </section>

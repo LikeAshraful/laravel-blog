@@ -3,13 +3,13 @@
 
 @push('css')
     <style>
-        .juice {
-            background-image: url('https://i.ibb.co/SN2Sp4T/juice.png');
-        }
+        /* .juice {
+                background-image: url('https://i.ibb.co/SN2Sp4T/juice.png');
+            }
 
-        .juice2 {
-            background-image: url('https://i.ibb.co/yyMXMSF/juice2.png');
-        }
+            .juice2 {
+                background-image: url('https://i.ibb.co/yyMXMSF/juice2.png');
+            } */
     </style>
 @endpush
 
@@ -132,7 +132,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="bg-gray-100 text-gray-900 py-20">
         <div class="container px-5 py-5 mx-auto">

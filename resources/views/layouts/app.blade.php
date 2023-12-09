@@ -105,8 +105,7 @@
 
 
 
-<body>
-
+<body id="app">
 
     <!-- ===== Main Content Start ===== -->
     <div class="min-h-screen bg-white">
@@ -117,7 +116,6 @@
         @include('partials.footer')
     </div>
     <!-- ===== Main Content End ===== -->
-
 
     <script>
         const btnHumb = document.querySelector("[data-toggle-navbar]")

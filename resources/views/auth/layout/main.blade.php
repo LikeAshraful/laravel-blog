@@ -11,7 +11,7 @@
     @vite('resources/js/app.js')
 
     <title>
-        Multi hotel main branch
+       LikeAshraful Blog
     </title>
 </head>
 

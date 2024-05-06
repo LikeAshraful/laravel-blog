@@ -98,7 +98,7 @@
     @vite('resources/js/app.js')
 
     <title>
-        Multi hotel main branch
+        Likeashraful Blog
     </title>
 </head>
 

@@ -4,7 +4,7 @@
         <!-- logo -->
         <div class="mr-auto md:w-48 flex-shrink-0">
             {{-- <img class="h-8 md:h-10" src="https://i.ibb.co/98pHdFq/2021-10-27-15h51-15.png" alt="" /> --}}
-            <p>Multi Hotel</p>
+            <p>Likeashraful Blog</p>
         </div>
         <!-- search -->
         <div class="w-full max-w-xs xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md hidden lg:flex items-center">

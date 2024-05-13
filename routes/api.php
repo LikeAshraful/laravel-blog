@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BlogController;
 
@@ -17,6 +18,9 @@ use App\Http\Controllers\Api\BlogController;
 |
 */
 
+
+
+
 Route::post('login', [AuthController::class, 'signin']);
 Route::post('register', [AuthController::class, 'signup']);
 
@@ -27,4 +31,6 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
-
+Route::prefix('v1')->group(function () {
+    Route::get('latest-posts', [ApiController::class, 'getLatestPosts']);
+});

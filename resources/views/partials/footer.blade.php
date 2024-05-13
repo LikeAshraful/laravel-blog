@@ -83,7 +83,7 @@
                 <div class="text-sm text-blueGray-500 font-semibold py-1">
                     Copyright © <span id="get-current-year">{{date('Y')}}</span><a
                         href="https://www.creative-tim.com/product/notus-js"
-                        class="text-blueGray-500 hover:text-gray-800" target="_blank"> Multi Hotel by
+                        class="text-blueGray-500 hover:text-gray-800" target="_blank"> Blog by
                         <a href="https://likeashraful.com"
                             class="text-blueGray-500 hover:text-blueGray-800">LikeAshraful</a>.
                 </div>

@@ -1,11 +1,11 @@
 <template>
     <section class="bg-white dark:bg-gray-900">
-        <div class="container px-6 py-10 mx-auto">
+        <div class="container px-5 py-10 mx-auto">
 
             <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
-                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" :src="data.image" alt="">
+                <img class="object-cover w-2/3 lg:w-1/2 rounded-xl h-72 lg:h-96" :src="data.image" alt="">
 
-                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 px-6">
                     <p class="text-sm text-blue-500 uppercase">{{ data.author }}</p>
 
                     <a href="#"
@@ -57,8 +57,6 @@ export default {
                 )
                 data.value = sliced[0];
                 data.value.image = 'https://bucket.barta24.com/' + sliced[0].featured_image;
-
-                console.log(data);
 
             } catch (error) {
                 console.error('Error Fetching data:', error);

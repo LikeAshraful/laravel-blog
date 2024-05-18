@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-gray-100 dark:bg-gray-900">
         <div class="container px-6 py-10 mx-auto">
             <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">From the blog</h1>
     
@@ -9,9 +9,9 @@
                     <img class="object-cover w-1/2" :src="post.image" alt="">
     
                     <div class="flex flex-col justify-between py-6 px-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        <router-link :to="{name:'SinglePost', params:{id:post.id} }" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                             {{ post.title }}
-                        </a>
+                        </router-link>
     
                         <span class="text-sm text-gray-500 dark:text-gray-300">{{ post.created_at }}</span>
                     </div>
@@ -44,8 +44,6 @@ export default {
                     ...item,
                     image: 'https://bucket.barta24.com/' + item.featured_image,
                 }));
-
-                console.log('featured post',data);
 
             } catch (error) {
                 console.error('Error Fetching data:', error);

@@ -5,6 +5,7 @@ import FeaturePost from './components/FeaturePost.vue';
 import FourColumnList from './components/ListFourCol.vue';
 import TrendingPost from './components/TrendingPost.vue';
 import TwoColumnList from './components/ListTwoCol.vue';
+import router from './router';
 
 createApp({
     components: {
@@ -13,4 +14,6 @@ createApp({
         'four-column-list': FourColumnList,
         'two-column-list': TwoColumnList,
     },
-}).mount('#app');
+})
+.use(router)
+.mount('#app');

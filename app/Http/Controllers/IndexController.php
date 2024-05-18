@@ -13,12 +13,7 @@ class IndexController extends Controller
 {
     public function getIndex()
     {
-        $latestPosts = Post::where('status', 1)->latest()->take(3)->get();
-        $categories = Category::latest()->take(5)->get();
-        return view('home', [
-            'latestPosts' => $latestPosts,
-            'categories' => $categories
-        ]);
+        return view('layouts.app');
     }
 
     public function getResume()

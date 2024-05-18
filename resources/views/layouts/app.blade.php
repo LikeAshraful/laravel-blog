@@ -98,25 +98,27 @@
     @vite('resources/js/app.js')
 
     <title>
-        Likeashraful Blog
+        Likeashraful
     </title>
 </head>
 
 
 
 
-<body id="app">
+<body>
+    <div id="app">
+        <!-- ===== Main Content Start ===== -->
+        <div class="min-h-screen bg-white">
+            @include('partials.header')
+            <main>
+                @yield('content')
+                <router-view></router-view>
+            </main>
+            @include('partials.footer')
+        </div>
+        <!-- ===== Main Content End ===== -->
 
-
-    <!-- ===== Main Content Start ===== -->
-    <div class="min-h-screen bg-white">
-        @include('partials.header')
-        <main>
-            @yield('content')
-        </main>
-        @include('partials.footer')
     </div>
-    <!-- ===== Main Content End ===== -->
 
     {{-- <script>
         const btnHumb = document.querySelector("[data-toggle-navbar]")

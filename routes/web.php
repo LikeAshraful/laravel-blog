@@ -1,20 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WorkController;
-use App\Http\Controllers\SkillController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', [IndexController::class, 'getIndex'])->name('home');
+// Route::get('/', [IndexController::class, 'getIndex'])->name('home');
 Route::get('/resume', [IndexController::class, 'getResume'])->name('resume.index');
 // Post
 Route::get('/blog', [PostController::class, 'getIndex'])->name('blog.index');
@@ -27,8 +26,9 @@ Route::get('blog/show/user-posts/{id}', [PostController::class, 'showPostsByUser
 Route::get('blog/show/tag/{tag}', [PostController::class, 'showPostsByTag'])
     ->name('blog.showPostsByTag');
 
-Auth::routes();
+Route::get('/{any}', [IndexController::class, 'getIndex'])->where('any', '.*');
 
+Auth::routes();
 
 Route::get('/user/profile', [HomeController::class, 'userProfile'])->name('admin.user.profile');
 
@@ -55,7 +55,6 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/category/edit/{id}', [CategoryController::class, 'editCategory'])->name('admin.edit_category');
     Route::post('/admin/category/edit/{id}', [CategoryController::class, 'updateCategory'])->name('admin.edit_category');
 
-
     // Comment
     Route::post('/comments/{post_id}', [CommentsController::class, 'store'])->name('comments.store');
     // Tag
@@ -63,14 +62,12 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/tag/edit/{id}', [TagController::class, 'update'])->name('admin.tags.update');
     Route::get('/admin/tag/delete/{id}', [TagController::class, 'destroy'])->name('admin.tags.delete');
 
-
     // Users
     Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users.index');
     Route::get('/admin/user/add', [UsersController::class, 'create'])->name('admin.users.create');
     Route::post('/admin/user/add', [UsersController::class, 'store'])->name('admin.users.store');
     Route::get('admin/user/{id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
     Route::post('admin/user/{id}/edit', [UsersController::class, 'update'])->name('admin.users.edit');
-
 
     // Work
     Route::get('admin/works/', [WorkController::class, 'index'])->name('admin.works.index');
@@ -80,7 +77,6 @@ Route::middleware(['admin'])->group(function () {
     Route::post('admin/work/{id}/edit', [WorkController::class, 'update'])->name('admin.works.edit');
     Route::get('admin/work/{id}/delete', [WorkController::class, 'destroy'])->name('admin.works');
 
-
     // Skill section
     Route::get('admin/skills', [SkillController::class, 'index'])->name('admin.skills.index');
     Route::get('admin/skills/add', [SkillController::class, 'create'])->name('admin.skills.create');
@@ -89,8 +85,6 @@ Route::middleware(['admin'])->group(function () {
     Route::post('admin/skills/{id}/edit', [SkillController::class, 'update'])->name('admin.skills.edit');
     Route::get('admin/skills/{id}/delete', [SkillController::class, 'destroy'])->name('admin.skills');
 });
-
-
 
 // Clear application cache:
 Route::get('/clear-cache', function () {

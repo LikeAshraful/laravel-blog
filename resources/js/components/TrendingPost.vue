@@ -3,7 +3,7 @@
         <div class="container px-5 py-10 mx-auto">
             <h1 class="text-3xl font-semibold text-gray-800 lg:text-4xl dark:text-white">Trending on</h1>
 
-            <div class="grid grid-cols-2 gap-4 mt-8 md:mt-16 md:grid-cols-4">
+            <div class="grid grid-cols-1 gap-4 mt-8 md:mt-16 md:grid-cols-2">
 
                 <div class="lg:flex" v-for="post in data.posts">
                     <div class="flex flex-col justify-between py-3">
@@ -12,9 +12,9 @@
                         </span>
                     </div>
                     <div class="flex flex-col justify-between py-3 lg:mx-6 px-5">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        <router-link :to="{ name: 'SinglePost', params: { id: post.id } }" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                             {{ post.title }}
-                        </a>
+                        </router-link>
                         <span class="text-sm text-gray-500 dark:text-gray-300">
                             {{ post.created_at }}
                         </span>
@@ -47,9 +47,7 @@ export default {
                 data.value.posts = lastFive.map(item => ({
                     ...item,
                     image: 'https://bucket.barta24.com/' + item.featured_image,
-                }));
-
-                console.log(data);
+                }));               
 
             } catch (error) {
                 console.error('Error Fetching data:', error);

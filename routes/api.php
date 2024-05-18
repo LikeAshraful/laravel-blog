@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BlogController;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +15,7 @@ use App\Http\Controllers\Api\BlogController;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
-
-
-
+ */
 
 Route::post('login', [AuthController::class, 'signin']);
 Route::post('register', [AuthController::class, 'signup']);
@@ -33,4 +29,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::prefix('v1')->group(function () {
     Route::get('latest-posts', [ApiController::class, 'getLatestPosts']);
+    Route::get('post/{id}', [ApiController::class, 'getPost']);
 });

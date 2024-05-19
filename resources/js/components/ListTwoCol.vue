@@ -38,8 +38,8 @@ export default {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${API_BASE_URL}latest-posts`);
-                const sliced = response.data.slice(13); // Exclude the first 13 item
-                const lastFive = sliced.slice(-6); // Get the last 8 items
+                // const sliced = response.data.slice(13); // Exclude the first 13 item
+                const lastFive = response.data.slice(-6); // Get the last 8 items
                 data.value.posts = lastFive.map(item => ({
                     ...item,
                     image: 'https://bucket.barta24.com/' + item.featured_image,

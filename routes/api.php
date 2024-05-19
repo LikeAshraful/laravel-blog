@@ -30,4 +30,5 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::prefix('v1')->group(function () {
     Route::get('latest-posts', [ApiController::class, 'getLatestPosts']);
     Route::get('post/{id}', [ApiController::class, 'getPost']);
+    Route::get('categories', [ApiController::class, 'getCategories']);
 });

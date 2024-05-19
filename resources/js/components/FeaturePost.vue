@@ -25,44 +25,15 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import { API_BASE_URL } from './config';
-
 
 const componentName = 'FeaturePost';
 export default {
-    name: componentName,
-    setup() {
-        const data = ref({
-            image: '',
-            value: {},
-        });
-
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${API_BASE_URL}latest-posts`);
-                const sliced = Object.fromEntries(
-                    Object.entries(response.data).slice(0, 1)
-                )
-                data.value = sliced[0];
-                data.value.image = 'https://bucket.barta24.com/' + sliced[0].featured_image;    
-                data.value.id = sliced[0].id;    
-                
-                console.log('sajid--------', data.value)
-
-            } catch (error) {
-                console.error('Error Fetching data:', error);
-            }
-        };
-
-        onMounted(() => {
-            fetchData();
-        });
-
-        return {
-            data,
-        }
+    name: componentName,   
+    props: {
+        data: {
+            type: Object,
+            required: true,
+        },
     },
 
 };

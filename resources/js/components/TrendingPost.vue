@@ -47,7 +47,7 @@ export default {
                 data.value.posts = lastFive.map(item => ({
                     ...item,
                     image: 'https://bucket.barta24.com/' + item.featured_image,
-                }));               
+                }));  
 
             } catch (error) {
                 console.error('Error Fetching data:', error);

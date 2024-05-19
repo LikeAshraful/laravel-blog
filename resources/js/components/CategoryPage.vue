@@ -2,8 +2,6 @@
     <div>
       <feature-post :data="featured_post"></feature-post>
       <four-column-list :posts="data.posts" ></four-column-list>
-      <trending-post></trending-post>
-      <two-column-list></two-column-list>
     </div>
   </template>
   
@@ -19,7 +17,7 @@
 
 
     export default {
-      name: 'HomePage',
+      name: 'CategoryPage',
       components: {
           FeaturePost,
           FourColumnList,

@@ -28,4 +28,11 @@ class ApiController extends Controller {
         }     
 
     }
+
+    public function getCategories() {
+        $client     = new \GuzzleHttp\Client();
+        $response   = $client->request('GET', 'https://barta24.com/api/v2/categories');
+        $categories = json_decode($response->getBody(), true);
+        return $categories;
+    }
 }
